@@ -1,0 +1,54 @@
+---
+title: "Practice MDDoc"
+author: "Zhanming Chen"
+date: "2025-10-27"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Headers
+
+`include = False` - Don't include in the output; it is actually default because we only want to show output in the manuscript.
+
+`echo = False` - show the output but not the code
+
+Gray areas are places for R scripts that will run
+
+Mix text and functions all together: R trunks
+
+`r nrow(dat)` - This is an R function specifically designed to determine the number of rows in a data structure. 
+
+>```{r age}
+>age_mean <- mean(dat$age)
+>age_sd <- sd(dat$age)
+>```
+
+> inline translation: *M* age = `r round(age_sd, digits = 2)`
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+# Getting a summary of data (add detailed and heavy comments)
+summary(cars)
+```
+
+```{r sample text, include=FALSE}
+table(cars$speed)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. 

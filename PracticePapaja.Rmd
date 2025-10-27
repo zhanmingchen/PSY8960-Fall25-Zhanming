@@ -1,0 +1,89 @@
+---
+title             : "Effect of Interactivity on Donation Intention: Mediated Roles of Playfulness, Social Presence, Sympathy, and Perceived Response Efficacy"
+shorttitle        : "Effect of Interactivity on Donation Intention"
+
+author: 
+  - name          : "Zhanming Chen"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "1985 Buford Avenue, Saint Paul, MN 55108, USA"
+    email         : "chen8475@umn.edu"
+    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
+      - "Conceptualization"
+      - "Writing - Original Draft Preparation"
+      - "Writing - Review & Editing"
+  - name          : "Ernst-August Doelle"
+    affiliation   : "1,2"
+    role:
+      - "Writing - Review & Editing"
+      - "Supervision"
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Minnesota"
+  - id            : "2"
+    institution   : "Dune School"
+
+authornote: |
+  We thanks everyone for everything. We received all of the funding, but have no conflicts of interest.
+
+abstract: |
+  Personality traits have been shown to be related to many aspects of life. But what about scientific reasoning? We don't really know how these are related. The current study consists of an analysis of 199 U.S. college students enrolled in STEM majors who completed measures of personality traits and scientific reasoning. The results indicated a lot of variability in scientific reasoning. 
+  
+keywords          : "keywords"
+wordcount         : "100"
+
+bibliography      : "r-references.bib"
+
+floatsintext      : yes
+linenumbers       : yes
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+r_refs("r-references.bib")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+## Background
+
+
+
+# Methods
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study @chen_etal_EmpoweringFarmingCommunities_2025. 
+
+## Participants
+
+## Material
+
+## Procedure
+
+## Data analysis
+We used it for all our analyses.
+
+
+# Results
+
+# Discussion
+
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::
