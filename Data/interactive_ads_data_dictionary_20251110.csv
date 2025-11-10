@@ -1,0 +1,46 @@
+variable,label,scale,subscale,keying,type,value_labels
+participant_id,Participant ID,,,NA,factor,NA
+consent,Do you agree/disagree to participate in this study?,,,NA,factor,1 Yes 2 No
+group_1,Please type in the three-digit password presented at the end of the video (stimuli):,,,NA,character,NA
+focus_1,Which of the following is not a state in the U.S.?,,,NA,factor,1 Florida 2 California 3 Texas 4 Illinois 5 Paris
+focus_2,Which of the following is NOT a shape?,,,NA,factor,1 Circle 2 Yellow 3 Square 4 Triangle
+focus_3,"Select ""Agree"" to show you are paying attention.",,,NA,factor,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+grapics_1,The graphics quality of the video was clear and sharp.,Graphics Quality,,NA,factor,1 True 2 False
+grapics_2,The video looked photo-realistic.,Graphics Quality,,NA,factor,1 True 2 False
+grapics_3,The video looked realistic.,Graphics Quality,,NA,factor,1 True 2 False
+inte_1,I was in control of my navigation through this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+inte_2,I had some control over the content of this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+inte_3,I was able to interact with this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+inte_4,The content of this video was responsive to my interaction.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+inte_5,I could understand the context of this video in an interactive way.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+soci_1,It feels as if this girl is present in the same space as me.,Social Presence,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+soci_2,It feels as if the girl is watching me and is aware of my presence.,Social Presence,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+soci_3,The thought that the girl isn't real crossed my mind often.,Social Presence,,-1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+soci_4,The girl appears to be alive.,Social Presence,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+soci_5,"The girl is only a computerized image, not a real person.",Social Presence,,-1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_1,"While watching this advertisement, I feel upset:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_2,"While watching this advertisement, I feel distressed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_3,"While watching this advertisement, I feel sympathetic:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_4,"While watching this advertisement, I feel alarmed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_5,"While watching this advertisement, I feel grieved:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_6,"While watching this advertisement, I feel troubled:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_7,"While watching this advertisement, I feel compassionate:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_8,"While watching this advertisement, I feel perturbed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_9,"While watching this advertisement, I feel worried:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_10,"While watching this advertisement, I feel disturbed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_1,I find this advertisement enjoyable:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_2,I find this advertisement exciting:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_3,I find this advertisement fun:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_4,I find this advertisement makes me feel like I am in another world:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+effi_1,My donation will make a positive difference.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+effi_2,Donations to this advertisement will make a meaningful difference.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+effi_3,It is valuable to make a donation to this advertisement.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+effi_4,Donations to this advertisement will have impact.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+dona_1,How motivated would you be to after watching the video?,Donation Intention,,1,numeric,1 Not at all motivated 2 Very little motivated 3 Slightly motivated 4 Moderately motivated 5 Slightly much motivated 6 Very motivated 7 Extremely motivated
+dona_2,I intend to help in the situation depicted in the advertisement.,Donation Intention,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+dona_3,How willing would you be to donate for this advertisement?,Donation Intention,,1,numeric,1 Extremely unwilling 2 Moderately unwilling 3 Slightly unwilling 4 Neither willing nor unwilling 5 Slightly willing 6 Moderately willing 7 Extremely willing
+age,What is your current age?,,,NA,numeric,NA
+gender,What is your gender?,,,NA,factor,1 Male 2 Female 3 Non-binary or third gender 4 Prefer not to say
+race,What is your ethnicity?,,,NA,factor,1 White 2 Black or African American 3 American Indian or Alaska Native 4 Asian 5 Native Hawaiian or Pacific Islander 6 Other please specify 7 Prefer not to say
+income,What is your average annual household income?,,,NA,factor,"1 Less than $10,000 2 $10,000 - $19,999 3 $20,000 - $29,999 4 $30,000 - $39,999 5 $40,000 - $49,999 6 $50,000 - $59,999 7 $60,000 - $69,999 8 $70,000 - $79,999 9 $80,000 - $89,999 10 $90,000 - $99,999 11 $100,000 - $149,999 12 More than $150,000 13 Prefer not to say"
+edu,What is your highest level of education you have completed?,,,NA,factor,1 Less than high school 2 High school graduate 3 Some college 4 2 year degree 5 4 year degree 6 Professional degree 7 Doctorate 8 Prefer not to say
