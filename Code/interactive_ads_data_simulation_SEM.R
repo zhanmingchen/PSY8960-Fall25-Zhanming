@@ -5,6 +5,16 @@
 # Checked on DATE, by NAME
 #############################################
 
+#### AI USE DISCLOSURE ####
+# When searching for the codes I need, such as  
+# how to use the lavaan package,
+# Google automatically presents the AI-generated results that 
+# includes sample codes and use cases. 
+# I partially refer to the AI-generated results
+# and check the actual search results to validate the codes. 
+# The references were listed as comments. 
+# Most codes come from "traits_reasoning_data_simulation.R" 
+
 #### Packages installation (optional) ####
 
 install.packages("faux") # for rnorm
@@ -343,7 +353,7 @@ tail(dat_sim)
 dat_sim %>% dplyr::select(focus_1_sim:edu_sim) %>% summarytools::freq()
 dat_sim
 
-# save the new file out and use for preregistration! 
+# save the new file out and use for preregistration
 
 write.csv(dat_sim, "./Data/interactive_ads_data_simulated_lavaan_20251112.csv", row.names = FALSE)
 

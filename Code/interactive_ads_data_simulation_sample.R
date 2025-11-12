@@ -5,6 +5,16 @@
 # Checked on DATE, by NAME
 #############################################
 
+#### AI USE DISCLOSURE ####
+# When searching for the codes I need, such as creating a function and 
+# how to use the replicate() function,
+# Google automatically presents the AI-generated results that 
+# includes sample codes and use cases. 
+# I partially refer to the AI-generated results
+# and check the actual search results to validate the codes. 
+# The references were listed as comments. 
+# Most codes come from "traits_reasoning_data_simulation.R"
+
 #### Packages installation (optional) ####
 
 install.packages("faux") # for rnorm
@@ -139,25 +149,28 @@ table(dat_sim$graphi_3_sim)
 
 data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group_val_2, prob_1, prob_2) {
   
-  ### Initialize an empty numeric vector
-  sim_var <- numeric(length(group_var))
+  ### initialize an empty variable
+  ### numeric(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/numeric 
+  var_sim <- numeric(length(group_var))
   
-  ### calculate the size of group 1 and 2 inside the function
+  ### calculate the size of group 1 and 2
+  ### sum(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum 
   size_1 <- sum(group_var == group_val_1)
   size_2 <- sum(group_var == group_val_2)
   
-  ### simulate for group 1
-  sim_var[group_var == group_val_1] <- sample(range_1:range_2, size = size_1, replace = TRUE, prob = prob_1)
+  ### simulate data for group 1 and 2
+  ### indexing: https://sudo-labs.github.io/r-data-science/vectors/
+  var_sim[group_var == group_val_1] <- sample(range_1:range_2, size = size_1, replace = TRUE, prob = prob_1)
+  var_sim[group_var == group_val_2] <- sample(range_1:range_2, size = size_2, replace = TRUE, prob = prob_2)
   
-  ### simulate for group 2
-  sim_var[group_var == group_val_2] <- sample(range_1:range_2, size = size_2, replace = TRUE, prob = prob_2)
-  
-  return(sim_var)
+  return(var_sim)
 }
 
 ## simulate data for inte_1 to inte_5, use replicate() and return a data frame
 
 ### initially the codes were ran one variable by another, but the codes were too long. I searched for the replicate() function to simplify this process
+### replicate(): https://www.rdocumentation.org/packages/zoon/versions/0.6.5/topics/Replicate
+### simplify: https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/
 
 n_inte <- 5
 inte_sim_all <- replicate(
@@ -174,13 +187,16 @@ inte_sim_all <- replicate(
   simplify = "data.frame"
 )
 
-### rename the new columns use paste0()
+### rename the new columns use paste()
+### https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste
 colnames(inte_sim_all) <- paste0("inte_", 1:n_inte, "_sim")
 
 ### cbind(): add new data frame at the end
+### https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cbind
 dat_sim <- cbind(dat_sim, inte_sim_all)
 
 ### a quick check
+### learn about "descr()": https://www.rdocumentation.org/packages/summarytools/versions/1.0.1/topics/summarytools-package
 dat_sim %>% dplyr::select(inte_1_sim:inte_5_sim) %>% summarytools::descr()
 
 ## simulate data for soci
@@ -350,7 +366,7 @@ tail(dat_sim)
 dat_sim %>% dplyr::select(focus_1_sim:edu_sim) %>% summarytools::freq()
 dat_sim
 
-# save the new file out and use for preregistration! 
+# save the new file out and use for preregistration
 
 write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251112.csv", row.names = FALSE)
 
