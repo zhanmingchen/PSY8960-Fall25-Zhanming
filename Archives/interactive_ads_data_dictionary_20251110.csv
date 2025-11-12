@@ -1,13 +1,13 @@
 variable,label,scale,subscale,keying,type,value_labels
 participant_id,Participant ID,,,NA,factor,NA
 consent,Do you agree/disagree to participate in this study?,,,NA,factor,1 Yes 2 No
-group_1,Please type in the three-digit password presented at the end of the video (stimuli):,,,NA,character,NA
+group,Please type in the three-digit password presented at the end of the video (stimuli):,,,NA,character,NA
 focus_1,Which of the following is not a state in the U.S.?,,,NA,factor,1 Florida 2 California 3 Texas 4 Illinois 5 Paris
 focus_2,Which of the following is NOT a shape?,,,NA,factor,1 Circle 2 Yellow 3 Square 4 Triangle
 focus_3,"Select ""Agree"" to show you are paying attention.",,,NA,factor,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-grapics_1,The graphics quality of the video was clear and sharp.,Graphics Quality,,NA,factor,1 True 2 False
-grapics_2,The video looked photo-realistic.,Graphics Quality,,NA,factor,1 True 2 False
-grapics_3,The video looked realistic.,Graphics Quality,,NA,factor,1 True 2 False
+graphi_1,The graphics quality of the video was clear and sharp.,Graphics Quality,,NA,factor,1 True 2 False
+graphi_2,The video looked photo-realistic.,Graphics Quality,,NA,factor,1 True 2 False
+graphi_3,The video looked realistic.,Graphics Quality,,NA,factor,1 True 2 False
 inte_1,I was in control of my navigation through this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 inte_2,I had some control over the content of this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 inte_3,I was able to interact with this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
