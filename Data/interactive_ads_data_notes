@@ -1,0 +1,13 @@
+##### Interactive Advertising Project
+##### Data Notes
+##### A file for internal project notes about the data
+##### First created Nov 10, 2025
+
+**2025-11-10:**
+
+* Update the data directory file: 1) replace the special characters with straight double quotes; 2) change the age variable as the numeric type; 3) revise the file title; 4) add scale names. 
+
+**2025-11-12:**
+
+* Generated the simulated data files using two different methods: lavaan package (model-based) and sample() function. 
+* Archive some data files for testings.
