@@ -13,7 +13,6 @@
 # I partially refer to the AI-generated results
 # and check the actual search results to validate the codes. 
 # The references were listed as comments. 
-# Most codes come from "traits_reasoning_data_simulation.R"
 
 #### Packages installation (optional) ####
 
@@ -22,14 +21,16 @@ install.packages("summarytools") # for checking
 install.packages("dplyr") # for checking
 install.packages("missMethods") # for miss numbers 
 install.packages("groundhog") # for packages
+install.packages("devtools") # for function documentation
 
 #### Package loading ####
 
+library(groundhog)
 library(faux)
 library(summarytools)
 library(dplyr)
 library(missMethods)
-library(groundhog)
+library(devtools)
 
 #### Workspace setup ####
 
@@ -41,11 +42,13 @@ sessionInfo()
 # dplyr_1.1.4
 # groundhog_3.2.3     
 # missMethods_0.4.0
+# devtools_2.4.6
 
 groundhog.library(faux, "2025-11-10")
 groundhog.library(summarytools, "2025-11-10")
 groundhog.library(dplyr, "2025-11-10")
 groundhog.library(missMethods, "2025-11-10")
+groundhog.library(devtools, "2025-11-10")
 
 sessionInfo() # check again
 
@@ -58,7 +61,7 @@ set.seed(1997)
 # get info on data specs from dictionary
 
 dict <- read.csv("./Data/interactive_ads_data_dictionary_20251110.csv")
-dict
+dict$variable
 
 # create empty data frame and populate with id variable (N = 600)
 
@@ -79,12 +82,12 @@ dat_sim$group_sim <- rep(c(1, 2), each = 300)
 # dat_sim$group_sim <- sample(group_sim_ini)
 table(dat_sim$group_sim)
 
-## Note the number of participants in group 1 and group 2 as parameters
+## Note the number of participants in group 1 and group 2 as parameters (not used in the codes)
 
-n_group_1 <- sum(dat_sim$group_sim == 1)
-n_group_2 <- sum(dat_sim$group_sim == 2)
-n_group_1
-n_group_2
+# n_group_1 <- sum(dat_sim$group_sim == 1)
+# n_group_2 <- sum(dat_sim$group_sim == 2)
+# n_group_1
+# n_group_2
 
 # [focus_1, focus_2, focus_3] simulate data for focus questions
 
@@ -99,126 +102,121 @@ dat_sim$focus_3_sim <- 6
 prob_right_skewed <- c(.03, .04, .05, .08, .10, .30, .40)
 prob_left_skewed <- c(.40, .30, .10, .08, .05, .04, .03)
 
+# create a function for the repetitive data generating process
+## Documentation for a function in R: https://r-pkgs.org/man.html 
+
+#' Generate data for two groups using sample function (The description did not work yet)
+#'
+#' This function generates two groups of data within a grouping variable. 
+#'
+#' @param range_1 An integer. The starting value of the range for the sample function.
+#' @param range_2 An integer. The ending value of the range for the sample function.
+#' @param group_var The column for group assignment.
+#' @param group_val_1 The specific value within group_var that identifies the first group.
+#' @param group_val_2 The specific value within group_var that identifies the second group.
+#' @param prob_1 A list of probability for sampling in group 1. Right skewed.
+#' @param prob_2 A list of probability for sampling in group 2. Left skewed. 
+#'
+#' @return A list of the simulated data. 
+#' @examples
+#' my_groups <- factor(rep(c("A", "B", "C"), times = 10))
+#'
+#' # Generate data for groups "A" and "B" from the range 1-5.
+#' # Group "C" will remain 0.
+#' sim_data <- data_generate_sample(
+#'   range_1 = 1,
+#'   range_2 = 5,
+#'   group_var = my_groups,
+#'   group_val_1 = "A",
+#'   group_val_2 = "B",
+#'   prob_1 = NULL,
+#'   prob_2 = NULL
+#' )
+data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group_val_2, prob_1, prob_2) {
+  
+  ### initialize an empty column for indexing later
+  ### numeric(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/numeric 
+  dat_sim <- numeric(length(group_var))
+  
+  ### calculate the size of group 1 and 2
+  ### sum(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum 
+  size_group_1 <- sum(group_var == group_val_1)
+  size_group_2 <- sum(group_var == group_val_2)
+  
+  ### simulate data for group 1 and 2
+  ### indexing: https://sudo-labs.github.io/r-data-science/vectors/
+  dat_sim[group_var == group_val_1] <- sample(range_1:range_2, size = size_group_1, replace = TRUE, prob = prob_1)
+  dat_sim[group_var == group_val_2] <- sample(range_1:range_2, size = size_group_2, replace = TRUE, prob = prob_2)
+  
+  return(dat_sim)
+}
+
 # simulate data for graphi
 
 ## [graphi_1] simulate data for two groups
 
-### initialize a blank 'grapics_1_sim' column
-dat_sim$graphi_1_sim <- 0
+### initialize blank 'grapics_x_sim' columns (necessary? -> no)
+### numeric(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/numeric 
+# dat_sim$graphi_1_sim <- numeric(length(dat_sim$group_sim))
+# dat_sim$graphi_2_sim <- numeric(length(dat_sim$group_sim))
+# dat_sim$graphi_3_sim <- numeric(length(dat_sim$group_sim))
 
-### select rows simulate for Group 1 (right-skewed)
-dat_sim$graphi_1_sim[dat_sim$group_sim == 1] <- sample(1:7, size = n_group_1, replace = TRUE, prob = prob_right_skewed)
+### initially the codes were ran one variable by another, but the codes were too long.
+### I created the data_generate_sample() to simplify
+### Use a for loop to further simplify
+n_graphi <- 3
+for (i in 1:n_graphi) {
+  col_title <- paste0("graphi_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
+    prob_2 = prob_left_skewed
+  )
+}
 
-### select rows and simulate for Group 2 (left-skewed)
-dat_sim$graphi_1_sim[dat_sim$group_sim == 2] <- sample(1:7, size = n_group_2, replace = TRUE, prob = prob_left_skewed)
-
-### quick checks: number of each 7 points, mean and sd in each group
-table(dat_sim$graphi_1_sim)
-
-## [graphi_2] simulate data for two groups
-
-### initialize a blank 'grapics_2_sim' column
-dat_sim$graphi_2_sim <- 0
-
-### select rows simulate for Group 1 (right-skewed)
-dat_sim$graphi_2_sim[dat_sim$group_sim == 1] <- sample(1:7, size = n_group_1, replace = TRUE, prob = prob_right_skewed)
-
-### select rows and simulate for Group 2 (left-skewed)
-dat_sim$graphi_2_sim[dat_sim$group_sim == 2] <- sample(1:7, size = n_group_2, replace = TRUE, prob = prob_left_skewed)
-
-### quick checks: number of each 7 points, mean and sd in each group
-table(dat_sim$graphi_2_sim)
-
-## [graphi_3] simulate data for two groups
-
-### initialize a blank 'grapics_3_sim' column
-dat_sim$graphi_3_sim <- 0
-
-### select rows simulate for Group 1 (right-skewed)
-dat_sim$graphi_3_sim[dat_sim$group_sim == 1] <- sample(1:7, size = n_group_1, replace = TRUE, prob = prob_right_skewed)
-
-### select rows and simulate for Group 2 (left-skewed)
-dat_sim$graphi_3_sim[dat_sim$group_sim == 2] <- sample(1:7, size = n_group_2, replace = TRUE, prob = prob_left_skewed)
-
-### quick checks: number of each 7 points, mean and sd in each group
-table(dat_sim$graphi_3_sim)
+### a quick check
+### descr(): https://www.rdocumentation.org/packages/summarytools/versions/1.0.1/topics/summarytools-package
+dat_sim %>% dplyr::select(graphi_1_sim:graphi_3_sim) %>% summarytools::descr()
 
 # simulate data for six variables: inte, soci, symp, play, effi, dona
 
-## create a function for the repetitive process
-
-data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group_val_2, prob_1, prob_2) {
-  
-  ### initialize an empty variable
-  ### numeric(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/numeric 
-  var_sim <- numeric(length(group_var))
-  
-  ### calculate the size of group 1 and 2
-  ### sum(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sum 
-  size_1 <- sum(group_var == group_val_1)
-  size_2 <- sum(group_var == group_val_2)
-  
-  ### simulate data for group 1 and 2
-  ### indexing: https://sudo-labs.github.io/r-data-science/vectors/
-  var_sim[group_var == group_val_1] <- sample(range_1:range_2, size = size_1, replace = TRUE, prob = prob_1)
-  var_sim[group_var == group_val_2] <- sample(range_1:range_2, size = size_2, replace = TRUE, prob = prob_2)
-  
-  return(var_sim)
+## simulate data for inte_1 to inte_5, use replicate() and return a data frame
+n_inte <- 5
+for (i in 1:n_inte) {
+  col_title <- paste0("inte_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
+    prob_2 = prob_left_skewed
+  )
 }
 
-## simulate data for inte_1 to inte_5, use replicate() and return a data frame
-
-### initially the codes were ran one variable by another, but the codes were too long. I searched for the replicate() function to simplify this process
-### replicate(): https://www.rdocumentation.org/packages/zoon/versions/0.6.5/topics/Replicate
-### simplify: https://aosmith.rbind.io/2018/08/29/getting-started-simulating-data/
-
-n_inte <- 5
-inte_sim_all <- replicate(
-  n = n_inte,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
-    prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-### rename the new columns use paste()
-### https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/paste
-colnames(inte_sim_all) <- paste0("inte_", 1:n_inte, "_sim")
-
-### cbind(): add new data frame at the end
-### https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/cbind
-dat_sim <- cbind(dat_sim, inte_sim_all)
-
 ### a quick check
-### learn about "descr()": https://www.rdocumentation.org/packages/summarytools/versions/1.0.1/topics/summarytools-package
 dat_sim %>% dplyr::select(inte_1_sim:inte_5_sim) %>% summarytools::descr()
 
 ## simulate data for soci
 
 n_soci <- 5
-soci_sim_all <- replicate(
-  n = n_soci,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
+for (i in 1:n_soci) {
+  col_title <- paste0("soci_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
     prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-colnames(soci_sim_all) <- paste0("soci_", 1:n_soci, "_sim")
-
-dat_sim <- cbind(dat_sim, soci_sim_all)
+  )
+}
 
 ### a quick check
 dat_sim %>% dplyr::select(soci_1_sim:soci_5_sim) %>% summarytools::descr()
@@ -226,23 +224,18 @@ dat_sim %>% dplyr::select(soci_1_sim:soci_5_sim) %>% summarytools::descr()
 ## simulate data for symp
 
 n_symp <- 10
-symp_sim_all <- replicate(
-  n = n_symp,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
+for (i in 1:n_symp) {
+  col_title <- paste0("symp_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
     prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-colnames(symp_sim_all) <- paste0("symp_", 1:n_symp, "_sim")
-
-dat_sim <- cbind(dat_sim, symp_sim_all)
+  )
+}
 
 ### a quick check
 dat_sim %>% dplyr::select(symp_1_sim:symp_10_sim) %>% summarytools::descr()
@@ -250,23 +243,18 @@ dat_sim %>% dplyr::select(symp_1_sim:symp_10_sim) %>% summarytools::descr()
 ## simulate data for play
 
 n_play <- 4
-play_sim_all <- replicate(
-  n = n_play,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
+for (i in 1:n_play) {
+  col_title <- paste0("play_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
     prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-colnames(play_sim_all) <- paste0("play_", 1:n_play, "_sim")
-
-dat_sim <- cbind(dat_sim, play_sim_all)
+  )
+}
 
 ### a quick check
 dat_sim %>% dplyr::select(play_1_sim:play_4_sim) %>% summarytools::descr()
@@ -274,23 +262,18 @@ dat_sim %>% dplyr::select(play_1_sim:play_4_sim) %>% summarytools::descr()
 ## simulate data for effi
 
 n_effi <- 4
-effi_sim_all <- replicate(
-  n = n_effi,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
+for (i in 1:n_effi) {
+  col_title <- paste0("effi_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
     prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-colnames(effi_sim_all) <- paste0("effi_", 1:n_effi, "_sim")
-
-dat_sim <- cbind(dat_sim, effi_sim_all)
+  )
+}
 
 ### a quick check
 dat_sim %>% dplyr::select(effi_1_sim:effi_4_sim) %>% summarytools::descr()
@@ -298,23 +281,18 @@ dat_sim %>% dplyr::select(effi_1_sim:effi_4_sim) %>% summarytools::descr()
 ## simulate data for dona
 
 n_dona <- 3
-dona_sim_all <- replicate(
-  n = n_dona,  
-  data_generate_sample(
-    range_1 = 1, 
-    range_2 = 7, 
-    group_var = dat_sim$group_sim, 
-    group_val_1 = 1, 
-    group_val_2 = 2, 
-    prob_1 = prob_right_skewed, 
+for (i in 1:n_dona) {
+  col_title <- paste0("dona_", i, "_sim") # paste() didn't work
+  dat_sim[[col_title]] <- data_generate_sample(
+    range_1 = 1,
+    range_2 = 7,
+    group_var = dat_sim$group_sim,
+    group_val_1 = 1,
+    group_val_2 = 2,
+    prob_1 = prob_right_skewed,
     prob_2 = prob_left_skewed
-  ),
-  simplify = "data.frame"
-)
-
-colnames(dona_sim_all) <- paste0("dona_", 1:n_dona, "_sim")
-
-dat_sim <- cbind(dat_sim, dona_sim_all)
+  )
+}
 
 ### a quick check
 dat_sim %>% dplyr::select(dona_1_sim:dona_3_sim) %>% summarytools::descr()
@@ -368,7 +346,7 @@ dat_sim
 
 # save the new file out and use for preregistration
 
-write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251112.csv", row.names = FALSE)
+write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251116.csv", row.names = FALSE)
 
 
 

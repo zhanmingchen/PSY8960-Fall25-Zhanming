@@ -13,7 +13,6 @@
 # I partially refer to the AI-generated results
 # and check the actual search results to validate the codes. 
 # The references were listed as comments. 
-# Most codes come from "traits_reasoning_data_simulation.R" 
 
 #### Packages installation (optional) ####
 

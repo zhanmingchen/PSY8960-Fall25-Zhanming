@@ -6,26 +6,23 @@ author:
   - name          : "Zhanming Chen"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
-    address       : "Department of Psychology, University of Minnesota, 75 East River Road, Minneapolis, MN 55455, USA"
-    email         : "moin@umn.edu"
+    address       : "Department of Design Innovation, University of Minnesota, 89 Church Street SE, Minneapolis, MN 55455, USA"
+    email         : "chen8475@umn.edu"
     role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
       - "Conceptualization"
-      - "Writing - Original Draft Preparation"
+      - "Methodology"
+      - "Project administration"
+      - "Visualization"
+      - "Writing - Original Draft"
       - "Writing - Review & Editing"
-  - name          : "Imaginary Friend"
-    affiliation   : "1,2"
-    role:
-      - "Writing - Review & Editing"
-      - "Supervision"
 
 affiliation:
   - id            : "1"
     institution   : "University of Minnesota"
-  - id            : "2"
-    institution   : "University of Darache"
 
 authornote: |
-  We thanks everyone for everything. We received all of the funding, but have no conflicts of interest.
+  I want to thank Professor Moin Syed for the guidance and hands-on lecture, as well as all students in PSY 8960 for their help and feedback. 
+  
 
 abstract: |
   Personality traits have been shown to be related to many aspects of life. But what about scientific reasoning? We don't really know how these are related. The current study consists of an analysis of 199 U.S. college students enrolled in STEM majors who completed measures of personality traits and scientific reasoning. The results indicated a lot of variability in scientific reasoning. 
@@ -60,7 +57,7 @@ r_refs("r-references.bib")
 
 ```{r analysis-preferences}
 # Seed for random number generation
-set.seed(1879)
+set.seed(1997)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
