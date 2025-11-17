@@ -7,7 +7,7 @@
 
 #### AI USE DISCLOSURE ####
 # When searching for the codes I need, such as creating a function and 
-# how to use the replicate() function,
+# how to use the for loop
 # Google automatically presents the AI-generated results that 
 # includes sample codes and use cases. 
 # I partially refer to the AI-generated results
@@ -21,7 +21,7 @@ install.packages("summarytools") # for checking
 install.packages("dplyr") # for checking
 install.packages("missMethods") # for miss numbers 
 install.packages("groundhog") # for packages
-install.packages("devtools") # for function documentation
+# install.packages("devtools") # for function documentation, not active
 
 #### Package loading ####
 
@@ -105,7 +105,8 @@ prob_left_skewed <- c(.40, .30, .10, .08, .05, .04, .03)
 # create a function for the repetitive data generating process
 ## Documentation for a function in R: https://r-pkgs.org/man.html 
 
-#' Generate data for two groups using sample function (The description did not work yet)
+#' Generate data for two groups using sample function 
+#' (20251116: the description part does not work.)
 #'
 #' This function generates two groups of data within a grouping variable. 
 #'
@@ -346,8 +347,4 @@ dat_sim
 
 # save the new file out and use for preregistration
 
-write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251116.csv", row.names = FALSE)
-
-
-
-
+write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251117.csv", row.names = FALSE)

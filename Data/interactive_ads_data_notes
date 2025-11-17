@@ -5,9 +5,19 @@
 
 **2025-11-10:**
 
-* Update the data directory file: 1) replace the special characters with straight double quotes; 2) change the age variable as the numeric type; 3) revise the file title; 4) add scale names. 
+* Update the data directory file following feedback: 
+* 1) replace the special characters with straight double quotes; 
+* 2) change the age variable as the numeric type; 
+* 3) revise the file title; 
+* 4) add scale names. 
 
 **2025-11-12:**
 
 * Generated the simulated data files using two different methods: lavaan package (model-based) and sample() function. 
 * Archive some data files for testings.
+
+**2025-11-17:**
+
+* Exported the simulated data using the most updated codes: 600 participants, two groups
+* Archived the historical version of the simulated data files
+* Note: please run "Code/interactive_ads_data_simulation_sample.R" to export the data
