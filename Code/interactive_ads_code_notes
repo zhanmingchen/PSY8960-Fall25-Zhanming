@@ -18,3 +18,7 @@
 * Re-check the codes for simulating data using sample() function before submission
 * Archived the codes using lavaan package (power analysis) after confirmed. Might go back and explore it more after this semester. 
 * Keep in mind to keep things simple; there is not necessary to use codes exceeding the sample codes 
+
+**2025-11-25:**
+
+* Updated the codes for data simulation by reverse the data for soci_3 and soci_5, which aligns with the descriptions in the data dictionary. 

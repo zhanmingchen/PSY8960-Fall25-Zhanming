@@ -1,0 +1,1245 @@
+---
+title             : "Effect of Interactivity on Donation Intention: Mediated Roles of Playfulness, Social Presence, Sympathy, and Perceived Response Efficacy"
+shorttitle        : "Effect of Interactivity on Donation Intention"
+
+author: 
+  - name          : "Zhanming Chen"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "Department of Design Innovation, University of Minnesota, 89 Church Street SE, Minneapolis, MN 55455, USA"
+    email         : "chen8475@umn.edu"
+    role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
+      - "Conceptualization"
+      - "Methodology"
+      - "Project administration"
+      - "Visualization"
+      - "Writing - Original Draft"
+      - "Writing - Review & Editing"
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Minnesota"
+
+authornote: |
+  I want to thank Professor Moin Syed for his guidance and hands-on lectures, as well as all the students in PSY 8960 for their help and feedback.
+  
+
+abstract: |
+  Interactive advertising can improve consumers' purchase intentions, but its effectiveness in promoting donation behaviors is less explored. This study investigates the relationship between perceived interactivity and donation intention. Data were collected from 600 MTurk participants using a between-subject  experimental design. Our analysis shows that perceived interactivity positively influences donation intention. Additionally, this effect is mediated by perceived playfulness, sympathy, social presence, and perceived response efficacy. 
+  
+keywords          : "interaction design, advertising, donation, behavior"
+wordcount         : "1464" # NOTE: update here before submission
+bibliography      : "r-references.bib"
+
+floatsintext      : yes
+linenumbers       : no
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library(papaja)
+library(groundhog)
+library(dplyr)
+library(psych)
+library(labelled)
+library(ggplot2)
+r_refs("r-references.bib")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(1997)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+```{r data setup, include=FALSE}
+dat_sim <- read.csv("../Data/interactive_ads_data_simulated_sample_20251125.csv")
+names(dat_sim)
+```
+
+As one of the emerging forms of advertising, interactive advertising adds features to traditional advertising that allow consumers to interact with and participate in the advertisements [@bezjian-avery_etal_NewMediaInteractive_1998]. These interactive features provided active control, two‑way communication, and a sense of reacting synchronically for the audience during the interaction process [@liu_shrum_WhatInteractivityIt_2002; @lombard_snyder-duch_InteractiveAdvertisingPresence_2001; @mcmillan_hwang_MeasuresPerceivedInteractivity_2002]. Traditional advertising, such as static image advertisements in shopping malls, provided a one-way channel to deliver marketing information to the audience in a controlled, linear narrative structure. Compared to traditional advertising, interactive advertising has proven to be advantageous in increasing both consumers’ attitudes and purchase intention [@macias_PreliminaryStructuralEquation_2003] and further enhancing the overall marketing performance [@gu_etal_WhatUsersCare_2022]. An example of interactive advertising was the 2015 augmented-reality-based advertisement launched by Coca-Cola in the United States, titled “Next time you’re thirsty, drink an ad” [@dipdropbrandingsolution_CocaColaCreates_2015]. During basketball matches, audiences could enjoy a visual experience of a smooth transition from television to mobile devices, as they watched the pouring of Coke Zero from a bottle on the TV screen into a glass in the mobile application. Coca-Cola then offered a coupon code that could be redeemed for a bottle of Coke Zero [@thecoca-colacompany_CokeZeroTips_2015].
+
+While previous research on interactive advertising focused on its effects on consumption behaviors [e.g., @ahn_etal_WhyPeopleInteract_2024] , the impact of interactive advertising on donation intentions and behaviors has been limitedly explored. In this study, we aim to understand how interactive advertisements influence donation attitudes and behaviors. Therefore, our research question is: how does the level of advertising interactivity affect the audience’s donation intentions?
+
+## The Present Study
+
+Research has shown that the interactive design features of advertisements (e.g., buttons and body gestures) contribute to higher levels of purchase intention [@ahn_etal_WhyPeopleInteract_2024; @gu_etal_WhatUsersCare_2022]. At the same time, the perceived interactivity of visual materials can positively influence the audience’s emotions, such as perceived playfulness, levels of sympathy, and social presence [@kang_etal_How3DVirtual_2020; @hand_varan_InteractiveStoriesAudience_2009; @ide_etal_EffectsAvatarsSymbolic_2021]. Furthermore, the audience’s positive emotions, including perceived playfulness, sympathy, and social presence, were separately examined and shown to affect their perceptions related to efficacy and behavioral intentions [@chen_etal_DonateTimeMoney_2019; @kim_yu_EffectCharacteristicsModels_2015]. Additionally, researchers identified perceived response efficacy, a belief that consumers’ help can make a meaningful difference for the beneficiaries [@sharma_morwitz_SavingMassesImpact_2016; @septianto_paramita_SadSmilingHow_2021], as an important factor explaining donation behaviors.
+
+Building on the prior research, we propose the following five hypotheses (H1–H5):
+
+-   H1. Perceived interactivity of advertisements will be positively related to (a) perceived playfulness, (b) level of sympathy, and (c) social presence.
+-   H2. Perceived playfulness will be positively related to (a) perceived response efficacy and (b) donation intention.
+-   H3. Level of sympathy will be positively related to (a) perceived response efficacy and (b) donation intention.
+-   H4. Social presence will be positively related to (a) perceived response efficacy and (b) donation intention.
+-   H5. Perceived efficacy will be positively related to donation intention.
+
+# Method
+
+We conducted a between-subjects online experiment with two groups: high-interactivity and low-interactivity (controlled group). The stimuli is designed as an ad that encourages participants to donate winter clothing to a local homeless girl. For interactive features, participants could either interact with the ad using a drag-and-drop feature to “donate” three pieces of clothing (i.e., high-interactivity) or watch the animation of the giving process of the three pieces of clothing (i.e., low-interactivity).
+
+The current study was **NOT** preregistered. Simulated data and codes are available at [OSF](https://osf.io/ept28/files) and [GitHub](https://github.com/zhanmingchen/PSY8960-Fall25-Zhanming).
+
+## Participants and Procedure
+
+```{r demographics, include=FALSE}
+
+# create objects for mean and sd of age, to be inserted in text
+age_sim_mean <- round(mean(dat_sim$age_sim), 2)
+age_sim_sd <- round(sd(dat_sim$age_sim), 2)
+
+# gender: recode gender factors from (1, 2) to (Male, Female, Non-binary or third gender, Prefer not to say)
+dat_sim <- mutate(dat_sim, gender_sim = factor(gender_sim, levels = c(1, 2, 3, 4), 
+                                           labels = c("Male", "Female", "Non-binary or third gender", "Prefer not to say")))
+summarytools::freq(dat_sim$gender_sim)
+
+# gender: creating object for percent, to include in descriptives and the table
+female_sim_percent <- round((nrow(filter(dat_sim, gender_sim == "Female"))/(nrow(dat_sim)) * 100), 2)
+nonbin_sim_percent <- round((nrow(filter(dat_sim, gender_sim == "Non-binary or third gender"))/(nrow(dat_sim)) * 100), 2)
+male_sim_percent <- round((nrow(filter(dat_sim, gender_sim == "Male"))/(nrow(dat_sim)) * 100), 2)
+female_sim_percent 
+nonbin_sim_percent 
+male_sim_percent
+
+# gender: creating object for frequency, to include in the table 
+female_sim_count <- length(which(dat_sim$gender_sim == "Female"))
+nonbin_sim_count <- length(which(dat_sim$gender_sim == "Non-binary or third gender"))
+male_sim_count <- length(which(dat_sim$gender_sim == "Male"))
+female_sim_count 
+nonbin_sim_count  
+male_sim_count 
+
+# recode race factors from (1, 7) to (White, Black or African American, American Indian or Alaska Native, Asian, Native Hawaiian or Pacific Islander, Other please specify, Prefer not to say)
+dat_sim <- mutate(dat_sim, race_sim = factor(race_sim, levels = c(1, 2, 3, 4, 5, 6, 7), 
+                                           labels = c("White", "Black or African American", "American Indian or Alaska Native", "Asian", "Native Hawaiian or Pacific Islander", "Other please specify", "Prefer not to say")))
+summarytools::freq(dat_sim$race_sim)
+
+# race: creating object for percent, to include in descriptives and the table
+white_sim_percent <- round((nrow(filter(dat_sim, race_sim == "White"))/(nrow(dat_sim)) * 100), 2)
+black_sim_percent <- round((nrow(filter(dat_sim, race_sim == "Black or African American"))/(nrow(dat_sim)) * 100), 2)
+indian_sim_percent <- round((nrow(filter(dat_sim, race_sim == "American Indian or Alaska Native"))/(nrow(dat_sim)) * 100), 2)
+asian_sim_percent <- round((nrow(filter(dat_sim, race_sim == "Asian"))/(nrow(dat_sim)) * 100), 2)
+islander_sim_percent <- round((nrow(filter(dat_sim, race_sim == "Native Hawaiian or Pacific Islander"))/(nrow(dat_sim)) * 100), 2)
+white_sim_percent 
+black_sim_percent 
+indian_sim_percent
+asian_sim_percent
+islander_sim_percent
+
+# race: creating object for frequency, to include in the table 
+white_sim_count <- length(which(dat_sim$race_sim == "White"))
+black_sim_count <- length(which(dat_sim$race_sim == "Black or African American"))
+indian_sim_count <- length(which(dat_sim$race_sim == "American Indian or Alaska Native"))
+asian_sim_count <- length(which(dat_sim$race_sim == "Asian"))
+islander_sim_count <- length(which(dat_sim$race_sim == "Native Hawaiian or Pacific Islander"))
+white_sim_count 
+black_sim_count 
+indian_sim_count
+asian_sim_count
+islander_sim_count
+
+# recode income factors from (1, 13) to (Less than $10,000, $10,000 - $19,999, $20,000 - $29,999, $30,000 - $39,999, $40,000 - $49,999, $50,000 - $59,999, $60,000 - $69,999, $70,000 - $79,999, $80,000 - $89,999, $90,000 - $99,999, $100,000 - $149,999, More than $150,000, Prefer not to say) 
+dat_sim <- mutate(dat_sim, income_sim = factor(income_sim, levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13), 
+                                           labels = c("Less than $10,000", "$10,000 - $19,999", "$20,000 - $29,999", "$30,000 - $39,999", "$40,000 - $49,999", "$50,000 - $59,999", "$60,000 - $69,999", "$70,000 - $79,999", "$80,000 - $89,999", "$90,000 - $99,999", "$100,000 - $149,999", "More than $150,000", "Prefer not to say")))
+summarytools::freq(dat_sim$income_sim)
+
+# income: creating object for percent, to include in descriptives and the table
+inc_00_sim_percent <- round((nrow(filter(dat_sim, income_sim == "Less than $10,000"))/(nrow(dat_sim)) * 100), 2)
+inc_01_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$10,000 - $19,999"))/(nrow(dat_sim)) * 100), 2)
+inc_02_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$20,000 - $29,999"))/(nrow(dat_sim)) * 100), 2)
+inc_03_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$30,000 - $39,999"))/(nrow(dat_sim)) * 100), 2)
+inc_04_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$40,000 - $49,999"))/(nrow(dat_sim)) * 100), 2)
+inc_05_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$50,000 - $59,999"))/(nrow(dat_sim)) * 100), 2)
+inc_06_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$60,000 - $69,999"))/(nrow(dat_sim)) * 100), 2)
+inc_07_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$70,000 - $79,999"))/(nrow(dat_sim)) * 100), 2)
+inc_08_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$80,000 - $89,999"))/(nrow(dat_sim)) * 100), 2)
+inc_09_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$90,000 - $99,999"))/(nrow(dat_sim)) * 100), 2)
+inc_10_sim_percent <- round((nrow(filter(dat_sim, income_sim == "$100,000 - $149,999"))/(nrow(dat_sim)) * 100), 2)
+inc_15_sim_percent <- round((nrow(filter(dat_sim, income_sim == "More than $150,000"))/(nrow(dat_sim)) * 100), 2)
+# check one of them
+inc_00_sim_percent
+
+# income: creating object for frequency, to include in the table 
+inc_00_sim_count <- length(which(dat_sim$income_sim == "Less than $10,000"))
+inc_01_sim_count <- length(which(dat_sim$income_sim == "$10,000 - $19,999"))
+inc_02_sim_count <- length(which(dat_sim$income_sim == "$20,000 - $29,999"))
+inc_03_sim_count <- length(which(dat_sim$income_sim == "$30,000 - $39,999"))
+inc_04_sim_count <- length(which(dat_sim$income_sim == "$40,000 - $49,999"))
+inc_05_sim_count <- length(which(dat_sim$income_sim == "$50,000 - $59,999"))
+inc_06_sim_count <- length(which(dat_sim$income_sim == "$60,000 - $69,999"))
+inc_07_sim_count <- length(which(dat_sim$income_sim == "$70,000 - $79,999"))
+inc_08_sim_count <- length(which(dat_sim$income_sim == "$80,000 - $89,999"))
+inc_09_sim_count <- length(which(dat_sim$income_sim == "$90,000 - $99,999"))
+inc_10_sim_count <- length(which(dat_sim$income_sim == "$100,000 - $149,999"))
+inc_15_sim_count <- length(which(dat_sim$income_sim == "More than $150,000"))
+# check one of them
+inc_00_sim_count
+
+# recode edu factors from (1, 8) to (Less than high school, High school graduate, Some college, 2 year degree, 4 year degree, Professional degree, Doctorate, Prefer not to say)
+dat_sim <- mutate(dat_sim, edu_sim = factor(edu_sim, levels = c(1, 2, 3, 4, 5, 6, 7, 8), 
+                                           labels = c("Less than high school", "High school graduate", "Some college", "2 year degree", "4 year degree", "Professional degree", "Doctorate", "Prefer not to say")))
+summarytools::freq(dat_sim$edu_sim)
+
+# edu: creating object for percent, to include in descriptives and the table
+l_h_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "Less than high school"))/(nrow(dat_sim)) * 100), 2) 
+h_s_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "High school graduate"))/(nrow(dat_sim)) * 100), 2) 
+s_c_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "Some college"))/(nrow(dat_sim)) * 100), 2) 
+twoy_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "2 year degree"))/(nrow(dat_sim)) * 100), 2) 
+foury_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "4 year degree"))/(nrow(dat_sim)) * 100), 2) 
+prof_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "Professional degree"))/(nrow(dat_sim)) * 100), 2) 
+doc_sim_percent <- round((nrow(filter(dat_sim, edu_sim == "Doctorate"))/(nrow(dat_sim)) * 100), 2) 
+# check one of them
+l_h_sim_percent 
+
+# edu: creating object for frequency, to include in the table 
+l_h_sim_count <- length(which(dat_sim$edu_sim == "Less than high school"))
+h_s_sim_count <- length(which(dat_sim$edu_sim == "High school graduate"))
+s_c_sim_count <- length(which(dat_sim$edu_sim == "Some college"))
+twoy_sim_count <- length(which(dat_sim$edu_sim == "2 year degree"))
+foury_sim_count <- length(which(dat_sim$edu_sim == "4 year degree"))
+prof_sim_count <- length(which(dat_sim$edu_sim == "Professional degree"))
+doc_sim_count <- length(which(dat_sim$edu_sim == "Doctorate"))
+# check one of them
+doc_sim_count 
+
+```
+
+The total sample in the current study consists of `r nrow(dat_sim)` US adults recruited from Amazon MTurk ($M_{\text{age}}$ = `r age_sim_mean`, $SD_{\text{age}}$ = `r age_sim_sd`). They were evenly assigned to one of the two conditions. The experiment begins with a consent process, and each participant interacts with the stimuli, followed by an online questionnaire including measures for variables and demographic questions. The questionnaire also includes measures for graphic qualities to ensure the differences of it between two groups are not significant, and three focus questions to make sure participants are answering the questions with their focus.
+
+The eligible criteria of participants include being adults, living in the US, being comfortable speaking English, and having access to a laptop and Internet to complete the tasks and survey using a web browser. Each participant are compensated a \$25 Amazon gift card.
+
+Here is a table of the detailed breakdown of participants' demographic information:
+
+*Table 1*. Participants' demographic information breakdown. 
+
+```{r demographics table, echo=FALSE}
+
+# this code creates a table, in which you almost literally "create" the table with the code
+# that is, the first row (with the ~) serves as the column headers
+# then the following entries indicate what should go in each cell. 
+
+demo_sim_table <- dplyr::tribble(
+    ~Item, ~Category, ~Frequency, ~Percentage, 
+    "Gender", "Female", female_sim_count, female_sim_percent, 
+    "", "Male", male_sim_count, male_sim_percent, 
+    "", "Non-binary or third gender", nonbin_sim_count, nonbin_sim_percent, 
+    "Race", "White", white_sim_count, white_sim_percent, 
+    "", "Black or African American", black_sim_count, black_sim_percent, 
+    "", "American Indian or Alaska Native", indian_sim_count, indian_sim_percent, 
+    "", "Asian", asian_sim_count, asian_sim_percent, 
+    "", "Native Hawaiian or Pacific Islander", islander_sim_count, islander_sim_percent, 
+    "Income", "Less than $10,000", inc_00_sim_count, inc_00_sim_percent, 
+    "", "$10,000 - $19,999", inc_01_sim_count, inc_01_sim_percent, 
+    "", "$20,000 - $29,999", inc_02_sim_count, inc_02_sim_percent, 
+    "", "$30,000 - $39,999", inc_03_sim_count, inc_03_sim_percent, 
+    "", "$40,000 - $49,999", inc_04_sim_count, inc_04_sim_percent, 
+    "", "$50,000 - $59,999", inc_05_sim_count, inc_05_sim_percent, 
+    "", "$60,000 - $69,999", inc_06_sim_count, inc_06_sim_percent, 
+    "", "$70,000 - $79,999", inc_07_sim_count, inc_07_sim_percent, 
+    "", "$80,000 - $89,999", inc_08_sim_count, inc_08_sim_percent, 
+    "", "$90,000 - $99,999", inc_09_sim_count, inc_09_sim_percent, 
+    "", "$100,000 - $149,999", inc_10_sim_count, inc_10_sim_percent, 
+    "", "More than $150,000", inc_15_sim_count, inc_15_sim_percent, 
+    "Education", "Less than high school", l_h_sim_count, l_h_sim_percent, 
+    "", "High school graduate", h_s_sim_count, h_s_sim_percent, 
+    "", "2 year degree", twoy_sim_count, twoy_sim_percent, 
+    "", "4 year degree", foury_sim_count, foury_sim_percent, 
+    "", "Professional degree", prof_sim_count, prof_sim_percent, 
+    "", "Doctorate", doc_sim_count, doc_sim_percent 
+    )
+
+# add the "%" sign to the third column
+demo_sim_table <- demo_sim_table %>% 
+  dplyr::mutate(Percentage = paste0(Percentage, "%"))
+
+# now we can use the built in APA table function to format that table
+
+apa_table(demo_sim_table, 
+             caption = "Demographic Breakdowns of Participants",
+             align = "l", digits = 2,
+          longtable = TRUE, # for page break
+          # note = "Demographic Breakdowns of Participants" # not in use
+          )
+
+```
+
+## Measures
+
+### Perceived Graphics Quality.
+
+```{r graphics quality, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(graphi_1_sim_scored = recode(graphi_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      graphi_2_sim_scored = recode(graphi_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      graphi_3_sim_scored = recode(graphi_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7))
+
+# pull these together into an object for further use
+
+graphi_sim_items <- c("graphi_1_sim_scored", "graphi_2_sim_scored", "graphi_3_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(graphi_sim_mean = rowMeans(dat_sim[ ,graphi_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$graphi_sim_mean) <- "Graphics Quality Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$graphi_sim_mean)
+
+# get cronbach's alpha for the scale, assign to object
+
+alpha_graphi_sim <-  psych::alpha(dplyr::select(dat_sim, "graphi_1_sim_scored", "graphi_2_sim_scored", "graphi_3_sim_scored"))
+alpha_graphi_sim
+
+# pull out just the alpha and save as object to insert into text
+## Issue here: in the future, I should try to simulate correlated data, instead of independent items (negative alpha value)
+
+graphi_sim_alpha <- alpha_graphi_sim$total$std.alpha
+graphi_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+graphi_sim_mean <- mean(dat_sim$graphi_sim_mean)
+graphi_sim_sd <- sd(dat_sim$graphi_sim_mean)
+graphi_sim_mean
+graphi_sim_sd
+
+# create object for mean and sd for each group to insert into table
+
+graphi_sim_mean_g1 <- mean(dat_sim$graphi_sim_mean[dat_sim$group_sim == 1])
+graphi_sim_mean_g2 <- mean(dat_sim$graphi_sim_mean[dat_sim$group_sim == 2])
+graphi_sim_sd_g1 <- sd(dat_sim$graphi_sim_mean[dat_sim$group_sim == 1])
+graphi_sim_sd_g2 <- sd(dat_sim$graphi_sim_mean[dat_sim$group_sim == 2])
+graphi_sim_mean_g1
+graphi_sim_sd_g1
+graphi_sim_mean_g2
+graphi_sim_sd_g2
+
+# create object for mean and sd for each item to insert into table
+
+graphi_1_sim_mean <- mean(dat_sim$graphi_1_sim_scored)
+graphi_2_sim_mean <- mean(dat_sim$graphi_2_sim_scored)
+graphi_3_sim_mean <- mean(dat_sim$graphi_3_sim_scored)
+graphi_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$graphi_1_sim_scored) <- "The graphics quality of the video was clear and sharp. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$graphi_2_sim_scored) <- "The video looked photo-realistic. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$graphi_3_sim_scored) <- "The video looked realistic. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+As a manipulation check, participants completed a three-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], in which they were asked questions that assesses their perceived graphics quality (Cronbach's alpha = `r round(graphi_sim_alpha, digits = 2)`).
+
+### Perceived Interactivity.
+
+```{r interactivity, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(inte_1_sim_scored = recode(inte_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      inte_2_sim_scored = recode(inte_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      inte_3_sim_scored = recode(inte_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      inte_4_sim_scored = recode(inte_4_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      inte_5_sim_scored = recode(inte_5_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      )
+
+# pull these together into an object for further use
+
+inte_sim_items <- c("inte_1_sim_scored", "inte_2_sim_scored", "inte_3_sim_scored", "inte_4_sim_scored", "inte_5_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(inte_sim_mean = rowMeans(dat_sim[ ,inte_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$inte_sim_mean) <- "Perceived Interactivity Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$inte_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_inte_sim <- psych::alpha(dplyr::select(dat_sim, "inte_1_sim_scored", "inte_2_sim_scored", "inte_3_sim_scored", "inte_4_sim_scored", "inte_5_sim_scored"))
+alpha_inte_sim
+
+# pull out just the alpha and save as object to insert into text
+## Issue here: in the future, I should try to simulate correlated data, instead of independent items (negative alpha value)
+
+inte_sim_alpha <- alpha_inte_sim$total$std.alpha
+inte_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+inte_sim_mean <- mean(dat_sim$inte_sim_mean)
+inte_sim_sd <- sd(dat_sim$inte_sim_mean)
+inte_sim_mean
+inte_sim_sd
+
+# create object for mean and sd for each group to insert into text
+
+inte_sim_mean_g1 <- mean(dat_sim$inte_sim_mean[dat_sim$group_sim == 1])
+inte_sim_sd_g1 <- sd(dat_sim$inte_sim_mean[dat_sim$group_sim == 1])
+inte_sim_mean_g2 <- mean(dat_sim$inte_sim_mean[dat_sim$group_sim == 2])
+inte_sim_sd_g2 <- sd(dat_sim$inte_sim_mean[dat_sim$group_sim == 2])
+inte_sim_mean_g1
+inte_sim_mean_g2
+
+# create object for mean and sd for each item to insert into table
+
+inte_1_sim_mean <- mean(dat_sim$inte_1_sim_scored)
+inte_2_sim_mean <- mean(dat_sim$inte_2_sim_scored)
+inte_3_sim_mean <- mean(dat_sim$inte_3_sim_scored)
+inte_4_sim_mean <- mean(dat_sim$inte_4_sim_scored)
+inte_5_sim_mean <- mean(dat_sim$inte_5_sim_scored)
+inte_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$inte_1_sim_scored) <- "I was in control of my navigation through this video. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$inte_2_sim_scored) <- "I had some control over the content of this video. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$inte_3_sim_scored) <- "I was able to interact with this video. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$inte_4_sim_scored) <- "The content of this video was responsive to my interaction. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$inte_5_sim_scored) <- "I could understand the context of this video in an interactive way. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+Participants completed a five-item, 7-point Likert scale [@yim_etal_AugmentedRealityTechnology_2017; @wu_MediatingRolePerceived_2005], in which they were asked to answer questions that assesses their perceived interactivity (Cronbach's alpha = `r round(inte_sim_alpha, digits = 2)`). 
+
+### Social Presence.
+
+```{r social presence, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(soci_1_sim_scored = recode(soci_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      soci_2_sim_scored = recode(soci_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      soci_3_sim_scored = recode(soci_3_sim, `1` = 7, `2` = 6, `3` = 5, `4` = 4, `5` = 3, `6` = 2, `7` = 1),
+                      soci_4_sim_scored = recode(soci_4_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      soci_5_sim_scored = recode(soci_5_sim, `1` = 7, `2` = 6, `3` = 5, `4` = 4, `5` = 3, `6` = 2, `7` = 1)
+                      )
+
+# pull these together into an object for further use
+
+soci_sim_items <- c("soci_1_sim_scored", "soci_2_sim_scored", "soci_3_sim_scored", "soci_4_sim_scored", "soci_5_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(soci_sim_mean = rowMeans(dat_sim[ ,soci_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$soci_sim_mean) <- "Social Presence Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$soci_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_soci_sim <- psych::alpha(dplyr::select(dat_sim, "soci_1_sim_scored", "soci_2_sim_scored", "soci_3_sim_scored", "soci_4_sim_scored", "soci_5_sim_scored"))
+alpha_soci_sim
+
+# pull out just the alpha and save as object to insert into text
+## Issue here: in the future, I should try to simulate correlated data, instead of independent items (negative alpha value)
+
+soci_sim_alpha <- alpha_soci_sim$total$std.alpha
+soci_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+soci_sim_mean <- mean(dat_sim$soci_sim_mean)
+soci_sim_sd <- sd(dat_sim$soci_sim_mean)
+soci_sim_mean
+soci_sim_sd
+
+# create object for mean and sd for each item to insert into table
+
+soci_1_sim_mean <- mean(dat_sim$soci_1_sim_scored)
+soci_2_sim_mean <- mean(dat_sim$soci_2_sim_scored)
+soci_3_sim_mean <- mean(dat_sim$soci_3_sim_scored)
+soci_4_sim_mean <- mean(dat_sim$soci_4_sim_scored)
+soci_5_sim_mean <- mean(dat_sim$soci_5_sim_scored)
+soci_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$soci_1_sim_scored) <- "It feels as if this girl is present in the same space as me. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$soci_2_sim_scored) <- "It feels as if the girl is watching me and is aware of my presence. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$soci_3_sim_scored) <- "The thought that the girl isn't real crossed my mind often. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$soci_4_sim_scored) <- "The girl appears to be alive. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$soci_5_sim_scored) <- "The girl is only a computerized image, not a real person. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+Participants completed a ten-item, 7-point Likert scale [@higgins_etal_SympathyDigitalInfluence_2022], in which they were asked to answer questions that assesses their social presence (Cronbach's alpha = `r round(soci_sim_alpha, digits = 2)`).
+
+### Sympathy.
+
+```{r sympathy, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(symp_1_sim_scored = recode(symp_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_2_sim_scored = recode(symp_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_3_sim_scored = recode(symp_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_4_sim_scored = recode(symp_4_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_5_sim_scored = recode(symp_5_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_6_sim_scored = recode(symp_6_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_7_sim_scored = recode(symp_7_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_8_sim_scored = recode(symp_8_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_9_sim_scored = recode(symp_9_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      symp_10_sim_scored = recode(symp_10_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7)
+                      )
+
+# pull these together into an object for further use
+
+symp_sim_items <- c("symp_1_sim_scored", "symp_2_sim_scored", "symp_3_sim_scored", "symp_4_sim_scored", "symp_5_sim_scored", "symp_6_sim_scored", "symp_7_sim_scored", "symp_8_sim_scored", "symp_9_sim_scored", "symp_10_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(symp_sim_mean = rowMeans(dat_sim[ ,symp_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$symp_sim_mean) <- "Sympathy Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$symp_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_symp_sim <- psych::alpha(dplyr::select(dat_sim, "symp_1_sim_scored", "symp_2_sim_scored", "symp_3_sim_scored", "symp_4_sim_scored", "symp_5_sim_scored", "symp_6_sim_scored", "symp_7_sim_scored", "symp_8_sim_scored", "symp_9_sim_scored", "symp_10_sim_scored"))
+alpha_symp_sim
+
+# pull out just the alpha and save as object to insert into text
+## Issue here: in the future, I should try to simulate correlated data, instead of independent items (negative alpha value)
+
+symp_sim_alpha <- alpha_symp_sim$total$std.alpha
+symp_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+symp_sim_mean <- mean(dat_sim$symp_sim_mean)
+symp_sim_sd <- sd(dat_sim$symp_sim_mean)
+symp_sim_mean
+symp_sim_sd
+
+# create object for mean and sd for each item to insert into table
+
+symp_1_sim_mean <- mean(dat_sim$symp_1_sim_scored)
+symp_2_sim_mean <- mean(dat_sim$symp_2_sim_scored)
+symp_3_sim_mean <- mean(dat_sim$symp_3_sim_scored)
+symp_4_sim_mean <- mean(dat_sim$symp_4_sim_scored)
+symp_5_sim_mean <- mean(dat_sim$symp_5_sim_scored)
+symp_6_sim_mean <- mean(dat_sim$symp_6_sim_scored)
+symp_7_sim_mean <- mean(dat_sim$symp_7_sim_scored)
+symp_8_sim_mean <- mean(dat_sim$symp_8_sim_scored)
+symp_9_sim_mean <- mean(dat_sim$symp_9_sim_scored)
+symp_10_sim_mean <- mean(dat_sim$symp_10_sim_scored)
+symp_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$symp_1_sim_scored) <- "While watching this advertisement, I feel upset. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_2_sim_scored) <- "While watching this advertisement, I feel distressed. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_3_sim_scored) <- "While watching this advertisement, I feel sympathetic. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_4_sim_scored) <- "While watching this advertisement, I feel alarmed. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_5_sim_scored) <- "While watching this advertisement, I feel grieved. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_6_sim_scored) <- "While watching this advertisement, I feel troubled. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_7_sim_scored) <- "While watching this advertisement, I feel compassionate. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_8_sim_scored) <- "While watching this advertisement, I feel perturbed. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_9_sim_scored) <- "While watching this advertisement, I feel worried. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$symp_10_sim_scored) <- "While watching this advertisement, I feel disturbed. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+Participants completed a 10-item, 7-point Likert scale [@baberini_etal_ExaminingEffectsPhotographic_2015], in which they were asked to answer questions that assesses their sympathy (Cronbach's alpha = `r round(symp_sim_alpha, digits = 2)`).
+
+### Perceived Playfulness.
+
+```{r perceived playfulness, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(play_1_sim_scored = recode(play_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      play_2_sim_scored = recode(play_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      play_3_sim_scored = recode(play_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      play_4_sim_scored = recode(play_4_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7)
+                      )
+
+# pull these together into an object for further use
+
+play_sim_items <- c("play_1_sim_scored", "play_2_sim_scored", "play_3_sim_scored", "play_4_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(play_sim_mean = rowMeans(dat_sim[ ,play_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$play_sim_mean) <- "Perceived Playfulness Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$play_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_play_sim <- psych::alpha(dplyr::select(dat_sim, "play_1_sim_scored", "play_2_sim_scored", "play_3_sim_scored", "play_4_sim_scored"))
+alpha_play_sim
+
+# pull out just the alpha and save as object to insert into text
+
+play_sim_alpha <- alpha_play_sim$total$std.alpha
+play_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+play_sim_mean <- mean(dat_sim$play_sim_mean)
+play_sim_sd <- sd(dat_sim$play_sim_mean)
+play_sim_mean
+play_sim_sd
+
+# create object for mean and sd for each item to insert into table
+
+play_1_sim_mean <- mean(dat_sim$play_1_sim_scored)
+play_2_sim_mean <- mean(dat_sim$play_2_sim_scored)
+play_3_sim_mean <- mean(dat_sim$play_3_sim_scored)
+play_4_sim_mean <- mean(dat_sim$play_4_sim_scored)
+play_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$play_1_sim_scored) <- "I find this advertisement enjoyable. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$play_2_sim_scored) <- "I find this advertisement exciting. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$play_3_sim_scored) <- "I find this advertisement fun. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$play_4_sim_scored) <- "I find this advertisement makes me feel like I am in another world. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+Participants completed a four-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], in which they were asked to answer questions that assesses their perceived playfulness (Cronbach's alpha = `r round(play_sim_alpha, digits = 2)`).
+
+### Perceived Response Efficacy.
+
+```{r perceived response efficacy, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(effi_1_sim_scored = recode(effi_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      effi_2_sim_scored = recode(effi_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      effi_3_sim_scored = recode(effi_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      effi_4_sim_scored = recode(effi_4_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7)
+                      )
+
+# pull these together into an object for further use
+
+effi_sim_items <- c("effi_1_sim_scored", "effi_2_sim_scored", "effi_3_sim_scored", "effi_4_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(effi_sim_mean = rowMeans(dat_sim[ ,effi_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$effi_sim_mean) <- "Perceived Response Efficacy Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$effi_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_effi_sim <- psych::alpha(dplyr::select(dat_sim, "effi_1_sim_scored", "effi_2_sim_scored", "effi_3_sim_scored", "effi_4_sim_scored"))
+alpha_effi_sim
+
+# pull out just the alpha and save as object to insert into text
+
+effi_sim_alpha <- alpha_effi_sim$total$std.alpha
+effi_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+effi_sim_mean <- mean(dat_sim$effi_sim_mean)
+effi_sim_sd <- sd(dat_sim$effi_sim_mean)
+effi_sim_mean
+effi_sim_sd
+
+# create object for mean and sd for each item to insert into table
+
+effi_1_sim_mean <- mean(dat_sim$effi_1_sim_scored)
+effi_2_sim_mean <- mean(dat_sim$effi_2_sim_scored)
+effi_3_sim_mean <- mean(dat_sim$effi_3_sim_scored)
+effi_4_sim_mean <- mean(dat_sim$effi_4_sim_scored)
+effi_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$effi_1_sim_scored) <- "My donation will make a positive difference. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$effi_2_sim_scored) <- "Donations to this advertisement will make a meaningful difference. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$effi_3_sim_scored) <- "It is valuable to make a donation to this advertisement. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$effi_4_sim_scored) <- "Donations to this advertisement will have impact. 1=Strongly Disagree, and 7=Strongly Agree."
+
+```
+
+Participants completed a four-item, 7-point Likert scale [@cryder_etal_DonorDetails_2013; @sharma_morwitz_SavingMassesImpact_2016], in which they were asked to answer questions that assesses their perceived response efficacy (Cronbach's alpha = `r round(effi_sim_alpha, digits = 2)`).
+
+### Donation Intention.
+
+```{r donation intention, include=FALSE}
+
+# first need to re-code the scale to allocate the correct numbers (for reversed items)
+
+dat_sim <- dat_sim %>% mutate(dona_1_sim_scored = recode(dona_1_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      dona_2_sim_scored = recode(dona_2_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7),
+                      dona_3_sim_scored = recode(dona_3_sim, `1` = 1, `2` = 2, `3` = 3, `4` = 4, `5` = 5, `6` = 6, `7` = 7)
+                      )
+
+# pull these together into an object for further use
+
+dona_sim_items <- c("dona_1_sim_scored", "dona_2_sim_scored", "dona_3_sim_scored")
+
+# creating a new variable that is the mean score across items
+
+dat_sim <- dat_sim %>% dplyr::mutate(dona_sim_mean = rowMeans(dat_sim[ ,dona_sim_items], na.rm = TRUE))
+
+# give that new variable a label
+
+labelled::var_label(dat_sim$dona_sim_mean) <- "Donation Intention Scale - Mean"
+
+# check that all looks ok
+
+psych::describe(dat_sim$dona_sim_mean)
+
+# get Cronbach's alpha for the scale, assign to object
+
+alpha_dona_sim <- psych::alpha(dplyr::select(dat_sim, "dona_1_sim_scored", "dona_2_sim_scored", "dona_3_sim_scored"))
+alpha_dona_sim
+
+# pull out just the alpha and save as object to insert into text
+
+dona_sim_alpha <- alpha_dona_sim$total$std.alpha
+dona_sim_alpha
+
+# create object for mean and sd for full scale to insert into text
+
+dona_sim_mean <- mean(dat_sim$dona_sim_mean)
+dona_sim_sd <- sd(dat_sim$dona_sim_mean)
+dona_sim_mean
+dona_sim_sd
+
+# create object for mean and sd for each item to insert into table
+
+dona_1_sim_mean <- mean(dat_sim$dona_1_sim_scored)
+dona_2_sim_mean <- mean(dat_sim$dona_2_sim_scored)
+dona_3_sim_mean <- mean(dat_sim$dona_3_sim_scored)
+dona_1_sim_mean
+
+# label each item in scale....may or may not use, but good to have
+
+labelled::var_label(dat_sim$dona_1_sim_scored) <- "How motivated would you be to after watching the video? 1=Not at all motivated, and 7=Extremely motivated."
+labelled::var_label(dat_sim$dona_2_sim_scored) <- "I intend to help in the situation depicted in the advertisement. 1=Strongly Disagree, and 7=Strongly Agree."
+labelled::var_label(dat_sim$dona_3_sim_scored) <- "How willing would you be to donate for this advertisement? 1=Extremely unwilling, and 7=Extremely willing."
+
+```
+
+Participants completed a three-item, 7-point Likert scale [@li_yin_FacialExpressionsBeneficiaries_2022], in which they were asked to answer questions that assesses their donation intention (Cronbach's alpha = `r round(dona_sim_alpha, digits = 2)`).
+
+## Data analysis
+
+We used `r cite_r("r-references.bib")` for all our analyses.
+
+# Results
+
+## Manipulation Tests
+
+A series of regression analyses and mediation analyses were performed using SPSS. The results revealed that one of the emotions and cognition factors (sympathy) and perceived response efficacy serially mediate the effect of perceived interactivity on donation intention while playfulness and social presence directly influences donation intention. We also found that the perceived facial expressions of the beneficiaries influence consumers’ donation intention through perceived playfulness and sympathy. The final model is presented in Figure 1.
+
+Discussion & Implications. Our results suggest interactive features (e.g., buttons and gestures) could increase donation intention especially by enhancing cognitive assessment of consumers’ efficacy. Unlike previous studies, our study highlighted the positive emotional heuristics (happy face leading to playfulness and donation intention). Considering the context of ad that highlights the suffering of the victims, this finding may imply the positive emotional experiences become very important in the context of interactive advertisement. Our study extends the understanding of advertising in the domain of donation behaviors by advocating the use of interactive features.
+
+```{r graphi t-test, include=FALSE}
+
+# F-test to compare two variances (homogeneity of variance)
+var.test(dat_sim$graphi_sim_mean ~ dat_sim$group_sim) # the variances are not significantly different
+
+# comparing graphic quality between two groups (interactivity)
+t_test_graphi_sim <- t.test(dat_sim$graphi_sim_mean ~ dat_sim$group_sim)
+# t_test_graphi_sim
+
+# save out all necessary objects
+
+t_graphi_sim <- round(t_test_graphi_sim$statistic, 2)
+df_graphi_sim <- round(t_test_graphi_sim$parameter, 2)
+p_graphi_sim <- round(t_test_graphi_sim$p.value, 3)
+# t_graphi_sim
+# df_graphi_sim
+# p_graphi_sim
+
+# correctly format the inline text
+
+p_graphi_sim_fmt <- ifelse(
+  p_graphi_sim < .001,
+  " < .001",
+  paste0(" = ", p_graphi_sim)
+)
+
+p_graphi_sim_fmt
+  
+```
+
+Overall, the graphic quality of the stimuli for two participant groups are well perceived ($M_{\text{graphic quality}}$ = `r round(graphi_sim_mean, digits = 2)`, $SD_{\text{graphic quality}}$ = `r round(graphi_sim_sd, digits = 2)`). The results from a Welch's independent samples *t*-test indicated no significant differences between the two groups, *t*(`r df_graphi_sim`) = `r t_graphi_sim`, *p*`r p_graphi_sim_fmt` (see Figure 1). 
+
+```{r graphi graph, echo=FALSE, fig.width = 4.5, fig.height = 3.5, dpi = 300}
+# create a bar chart using ggplot
+## bar chart: geom_col() leaves the data as is. https://ggplot2.tidyverse.org/reference/geom_bar.html 
+## errorbars: https://ggplot2.tidyverse.org/reference/geom_linerange.html
+
+## prepare data for ggplot: map labels to group number 
+group_sim_bar_dat <- data.frame(
+  group_label = c("Low interactivity", "High interactivity"),
+  graphic_mean = NA,
+  graphic_sd = NA,
+  graphic_se = NA
+)
+
+group_sim_bar_dat$graphic_mean[group_sim_bar_dat$group_label == "High interactivity"] <- graphi_sim_mean_g1
+group_sim_bar_dat$graphic_mean[group_sim_bar_dat$group_label == "Low interactivity"] <- graphi_sim_mean_g2
+group_sim_bar_dat$graphic_sd[group_sim_bar_dat$group_label == "High interactivity"] <- graphi_sim_sd_g1
+group_sim_bar_dat$graphic_sd[group_sim_bar_dat$group_label == "Low interactivity"] <- graphi_sim_sd_g2
+group_sim_bar_dat$graphic_se[group_sim_bar_dat$group_label == "High interactivity"] <- graphi_sim_sd_g1 / sqrt(300)
+group_sim_bar_dat$graphic_se[group_sim_bar_dat$group_label == "Low interactivity"] <- graphi_sim_sd_g2 / sqrt(300)
+# group_sim_bar_dat$graphic_mean
+
+# create ggplot bar chart
+
+ggplot(group_sim_bar_dat, aes(x = group_label, y = graphic_mean, fill = group_label)) +
+  geom_col(width = 0.6, color = "black") +
+  geom_errorbar(aes(ymin = graphic_mean - graphic_se, ymax = graphic_mean + graphic_se), width = 0.15) +
+  scale_fill_manual(
+    values = c("Low interactivity"  = "#1b9e77",
+               "High interactivity" = "#d95f02")
+  ) +
+  scale_y_continuous( 
+    breaks = 1:7, # set the y axis numbers
+    expand = c(0, 0) # no extra space below/above
+  ) + 
+  coord_cartesian(
+    ylim = c(1, 7)  # show from 1 to 7
+  ) +
+  labs(
+    x = "Groups",
+    y = "Perceived graphic quality"
+  ) +
+  theme_apa() +
+  theme(legend.position = "none") # removes the legend
+
+```
+
+*Figure 1*. Perceived graphic quality of stimuli. 
+
+```{r interactivity t-test, include=FALSE}
+
+# F-test to compare two variances (homogeneity of variance)
+var.test(dat_sim$inte_sim_mean ~ dat_sim$group_sim) # the variances are not significantly different
+
+# comparing graphic quality between two groups (interactivity)
+t_test_inte_sim <- t.test(dat_sim$inte_sim_mean ~ dat_sim$group_sim)
+t_test_inte_sim
+
+# save out all necessary objects
+
+t_inte_sim <- round(t_test_inte_sim$statistic, 2)
+df_inte_sim <- round(t_test_inte_sim$parameter, 2)
+p_inte_sim <- round(t_test_inte_sim$p.value, 3)
+t_inte_sim
+df_inte_sim
+p_inte_sim
+
+# correctly format the inline text
+
+p_inte_sim_fmt <- ifelse(
+  p_inte_sim < .001,
+  " < .001",
+  paste0(" = ", p_inte_sim)
+)
+
+p_inte_sim_fmt
+  
+```
+
+According to the results from a Welch's independent samples *t*-test that compares the perceived interactivity of the stimuli between the high-interactivity group ($M_{\text{high interactivity}}$ = `r round(inte_sim_mean_g1, digits = 2)`, $SD_{\text{high interactivity}}$ = `r round(inte_sim_sd_g1, digits = 2)`) and the low-interactivity group ($M_{\text{low interactivity}}$ = `r round(inte_sim_mean_g2, digits = 2)`, $SD_{\text{low interactivity}}$ = `r round(inte_sim_sd_g2, digits = 2)`), there are significant differences between the two groups, *t*(`r df_inte_sim`) = `r t_inte_sim`, *p*`r p_inte_sim_fmt` (see Figure 2).
+
+```{r interactivity graph, echo=FALSE, fig.width = 4.5, fig.height = 3.5, dpi = 300}
+# create a bar chart using ggplot
+## bar chart: geom_col() leaves the data as is. https://ggplot2.tidyverse.org/reference/geom_bar.html 
+## errorbars: https://ggplot2.tidyverse.org/reference/geom_linerange.html
+
+## prepare data for ggplot: map labels to group number 
+inte_sim_bar_dat <- data.frame(
+  group_label = c("Low interactivity", "High interactivity"),
+  inte_mean = NA,
+  inte_sd = NA,
+  inte_se = NA
+)
+
+inte_sim_bar_dat$inte_mean[inte_sim_bar_dat$group_label == "High interactivity"] <- inte_sim_mean_g1
+inte_sim_bar_dat$inte_mean[inte_sim_bar_dat$group_label == "Low interactivity"] <- inte_sim_mean_g2
+inte_sim_bar_dat$inte_sd[inte_sim_bar_dat$group_label == "High interactivity"] <- inte_sim_sd_g1
+inte_sim_bar_dat$inte_sd[inte_sim_bar_dat$group_label == "Low interactivity"] <- inte_sim_sd_g2
+inte_sim_bar_dat$inte_se[inte_sim_bar_dat$group_label == "High interactivity"] <- inte_sim_sd_g1 / sqrt(300)
+inte_sim_bar_dat$inte_se[inte_sim_bar_dat$group_label == "Low interactivity"] <- inte_sim_sd_g2 / sqrt(300)
+# inte_sim_bar_dat$inte_sd
+
+# y-position for significance line and stars
+sig_y <- max(inte_sim_bar_dat$inte_mean + inte_sim_bar_dat$inte_se) + 0.5
+
+# create ggplot bar chart
+
+ggplot(inte_sim_bar_dat, aes(x = group_label, y = inte_mean, fill = group_label)) +
+  geom_col(width = 0.6, color = "black") +
+  geom_errorbar(aes(ymin = inte_mean - inte_se, ymax = inte_mean + inte_se), width = 0.15) +
+  geom_segment(aes(x = 1, xend = 2, y = sig_y, yend = sig_y)) + # horizontal significance line 
+  annotate("text", x = 1.5, y = sig_y + 0.15, label = "***", size = 4) + # significance asterisk
+  scale_fill_manual(
+    values = c("Low interactivity"  = "#1b9e77",
+               "High interactivity" = "#d95f02")
+  ) +
+  scale_y_continuous( 
+    breaks = 1:7, # set the y axis numbers
+    expand = c(0, 0) # no extra space below/above
+  ) + 
+  coord_cartesian(
+    ylim = c(1, 7)  # show from 1 to 7
+  ) +
+  labs(
+    x = "Groups",
+    y = "Perceived interactivity"
+  ) +
+  theme_apa() +
+  theme(legend.position = "none") # removes the legend
+
+```
+
+*Figure 2*. Perceived interactivity of stimuli. 
+
+## Hypotheses Validation
+
+A Pearson correlation test was also conducted to test the hypotheses. All hypotheses were supported (see the table below). 
+
+```{r pearson h1a inte ~ play, include = FALSE}
+# Pearson correlation test
+
+cor_inte_play_sim <- cor.test(dat_sim$inte_sim_mean, dat_sim$play_sim_mean)
+cor_inte_play_sim
+
+# save out all necessary objects
+t_inte_play_sim <- round(cor_inte_play_sim$statistic, 2)
+df_inte_play_sim <- round(cor_inte_play_sim$parameter, 2)
+p_inte_play_sim <- round(cor_inte_play_sim$p.value, 3)
+t_inte_play_sim
+df_inte_play_sim
+p_inte_play_sim
+
+# correctly format the inline text
+
+p_inte_play_sim_fmt <- ifelse(
+  p_inte_play_sim < .001,
+  "< .001",
+  p_inte_play_sim
+)
+
+p_inte_play_sim_fmt
+
+```
+
+```{r pearson h1b inte ~ symp, include = FALSE}
+# Pearson correlation test
+
+cor_inte_symp_sim <- cor.test(dat_sim$inte_sim_mean, dat_sim$symp_sim_mean)
+cor_inte_symp_sim
+
+# save out all necessary objects
+t_inte_symp_sim <- round(cor_inte_symp_sim$statistic, 2)
+df_inte_symp_sim <- round(cor_inte_symp_sim$parameter, 2)
+p_inte_symp_sim <- round(cor_inte_symp_sim$p.value, 3)
+t_inte_symp_sim
+df_inte_symp_sim
+p_inte_symp_sim
+
+# correctly format the inline text
+
+p_inte_symp_sim_fmt <- ifelse(
+  p_inte_symp_sim < .001,
+  "< .001",
+  p_inte_symp_sim
+)
+
+p_inte_symp_sim_fmt
+
+```
+
+```{r pearson h1c inte ~ soci, include = FALSE}
+# Pearson correlation test
+
+cor_inte_soci_sim <- cor.test(dat_sim$inte_sim_mean, dat_sim$soci_sim_mean)
+cor_inte_soci_sim
+
+# save out all necessary objects
+t_inte_soci_sim <- round(cor_inte_soci_sim$statistic, 2)
+df_inte_soci_sim <- round(cor_inte_soci_sim$parameter, 2)
+p_inte_soci_sim <- round(cor_inte_soci_sim$p.value, 3)
+t_inte_soci_sim
+df_inte_soci_sim
+p_inte_soci_sim
+
+# correctly format the inline text
+
+p_inte_soci_sim_fmt <- ifelse(
+  p_inte_soci_sim < .001,
+  "< .001",
+  p_inte_soci_sim
+)
+
+p_inte_soci_sim_fmt
+
+```
+
+```{r pearson h2a play ~ effi, include = FALSE}
+# Pearson correlation test
+
+cor_play_effi_sim <- cor.test(dat_sim$play_sim_mean, dat_sim$effi_sim_mean)
+cor_play_effi_sim
+
+# save out all necessary objects
+t_play_effi_sim <- round(cor_play_effi_sim$statistic, 2)
+df_play_effi_sim <- round(cor_play_effi_sim$parameter, 2)
+p_play_effi_sim <- round(cor_play_effi_sim$p.value, 3)
+t_play_effi_sim
+df_play_effi_sim
+p_play_effi_sim
+
+# correctly format the inline text
+
+p_play_effi_sim_fmt <- ifelse(
+  p_play_effi_sim < .001,
+  "< .001",
+  p_play_effi_sim
+)
+
+p_play_effi_sim_fmt
+
+```
+
+```{r pearson h2b play ~ dona, include = FALSE}
+# Pearson correlation test
+
+cor_play_dona_sim <- cor.test(dat_sim$play_sim_mean, dat_sim$dona_sim_mean)
+cor_play_dona_sim
+
+# save out all necessary objects
+t_play_dona_sim <- round(cor_play_dona_sim$statistic, 2)
+df_play_dona_sim <- round(cor_play_dona_sim$parameter, 2)
+p_play_dona_sim <- round(cor_play_dona_sim$p.value, 3)
+t_play_dona_sim
+df_play_dona_sim
+p_play_dona_sim
+
+# correctly format the inline text
+
+p_play_dona_sim_fmt <- ifelse(
+  p_play_dona_sim < .001,
+  "< .001",
+  p_play_dona_sim
+)
+
+p_play_dona_sim_fmt
+
+```
+
+```{r pearson h3a symp ~ effi, include = FALSE}
+# Pearson correlation test
+
+cor_symp_effi_sim <- cor.test(dat_sim$symp_sim_mean, dat_sim$effi_sim_mean)
+cor_symp_effi_sim
+
+# save out all necessary objects
+t_symp_effi_sim <- round(cor_symp_effi_sim$statistic, 2)
+df_symp_effi_sim <- round(cor_symp_effi_sim$parameter, 2)
+p_symp_effi_sim <- round(cor_symp_effi_sim$p.value, 3)
+t_symp_effi_sim
+df_symp_effi_sim
+p_symp_effi_sim
+
+# correctly format the inline text
+
+p_symp_effi_sim_fmt <- ifelse(
+  p_symp_effi_sim < .001,
+  "< .001",
+  p_symp_effi_sim
+)
+
+p_symp_effi_sim_fmt
+
+```
+
+```{r pearson h3b symp ~ dona, include = FALSE}
+# Pearson correlation test
+
+cor_symp_dona_sim <- cor.test(dat_sim$symp_sim_mean, dat_sim$dona_sim_mean)
+cor_symp_dona_sim
+
+# save out all necessary objects
+t_symp_dona_sim <- round(cor_symp_dona_sim$statistic, 2)
+df_symp_dona_sim <- round(cor_symp_dona_sim$parameter, 2)
+p_symp_dona_sim <- round(cor_symp_dona_sim$p.value, 3)
+t_symp_dona_sim
+df_symp_dona_sim
+p_symp_dona_sim
+
+# correctly format the inline text
+
+p_symp_dona_sim_fmt <- ifelse(
+  p_symp_dona_sim < .001,
+  "< .001",
+  p_symp_dona_sim
+)
+
+p_symp_dona_sim_fmt
+
+```
+
+```{r pearson h4a soci ~ effi, include = FALSE}
+# Pearson correlation test
+
+cor_soci_effi_sim <- cor.test(dat_sim$soci_sim_mean, dat_sim$effi_sim_mean)
+cor_soci_effi_sim
+
+# save out all necessary objects
+t_soci_effi_sim <- round(cor_soci_effi_sim$statistic, 2)
+df_soci_effi_sim <- round(cor_soci_effi_sim$parameter, 2)
+p_soci_effi_sim <- round(cor_soci_effi_sim$p.value, 3)
+t_soci_effi_sim
+df_soci_effi_sim
+p_soci_effi_sim
+
+# correctly format the inline text
+
+p_soci_effi_sim_fmt <- ifelse(
+  p_soci_effi_sim < .001,
+  "< .001",
+  p_soci_effi_sim
+)
+
+p_soci_effi_sim_fmt
+
+```
+
+```{r pearson h4b soci ~ dona, include = FALSE}
+# Pearson correlation test
+
+cor_soci_dona_sim <- cor.test(dat_sim$soci_sim_mean, dat_sim$dona_sim_mean)
+cor_soci_dona_sim
+
+# save out all necessary objects
+t_soci_dona_sim <- round(cor_soci_dona_sim$statistic, 2)
+df_soci_dona_sim <- round(cor_soci_dona_sim$parameter, 2)
+p_soci_dona_sim <- round(cor_soci_dona_sim$p.value, 3)
+t_soci_dona_sim
+df_soci_dona_sim
+p_soci_dona_sim
+
+# correctly format the inline text
+
+p_soci_dona_sim_fmt <- ifelse(
+  p_soci_dona_sim < .001,
+  "< .001",
+  p_soci_dona_sim
+)
+
+p_soci_dona_sim_fmt
+
+```
+
+```{r pearson h5 effi ~ dona, include = FALSE}
+# Pearson correlation test
+
+cor_effi_dona_sim <- cor.test(dat_sim$effi_sim_mean, dat_sim$dona_sim_mean)
+cor_effi_dona_sim
+
+# save out all necessary objects
+t_effi_dona_sim <- round(cor_effi_dona_sim$statistic, 2)
+df_effi_dona_sim <- round(cor_effi_dona_sim$parameter, 2)
+p_effi_dona_sim <- round(cor_effi_dona_sim$p.value, 3)
+t_effi_dona_sim
+df_effi_dona_sim
+p_effi_dona_sim
+
+# correctly format the inline text
+
+p_effi_dona_sim_fmt <- ifelse(
+  p_effi_dona_sim < .001,
+  "< .001",
+  p_effi_dona_sim
+)
+
+p_effi_dona_sim_fmt
+
+```
+
+```{r hypothesis table, echo=FALSE}
+
+# this code creates a table, in which you almost literally "create" the table with the code
+# that is, the first row (with the ~) serves as the column headers
+# then the following entries indicate what should go in each cell. 
+
+hypo_sim_table <- dplyr::tribble(
+    ~Hypothesis, ~Pairs, ~t, ~p,  
+    "H1a", "Interactivity-Playfulness", t_inte_play_sim, p_inte_play_sim_fmt, 
+    "H1b", "Interactivity-Sympathy", t_inte_symp_sim, p_inte_symp_sim_fmt, 
+    "H1c", "Interactivity-Social presence", t_inte_soci_sim, p_inte_soci_sim_fmt, 
+    "H2a", "Playfulness-Response efficacy", t_play_effi_sim, p_play_effi_sim_fmt, 
+    "H2b", "Playfulness-Donation intention", t_play_dona_sim, p_play_dona_sim_fmt, 
+    "H3a", "Sympathy-Response efficacy", t_symp_effi_sim, p_symp_effi_sim_fmt, 
+    "H3b", "Sympathy-Donation intention", t_symp_dona_sim, p_symp_dona_sim_fmt, 
+    "H4a", "Social presence-Response efficacy", t_soci_effi_sim, p_soci_effi_sim_fmt, 
+    "H4b", "Social presence-Donation intention", t_soci_dona_sim, p_soci_dona_sim_fmt, 
+    "H5", "Response efficacy-Donation intention", t_effi_dona_sim, p_effi_dona_sim_fmt
+    )
+
+# now we can use the built in APA table function to format that table
+
+apa_table(hypo_sim_table, 
+             caption = "Hypotheses Test Results",
+             align = "l", digits = 2,
+          longtable = TRUE, # for page break
+          # note = "Demographic Breakdowns of Participants" # not in use
+          )
+
+```
+
+# Discussion
+
+The purpose of this study was to examine how perceived interactivity relates to donation intention in advertisement design. The results supported our hypotheses, indicating that this relationship is mediated by perceived playfulness, sympathy, social presence, and response efficacy. Consequently, these findings suggest that advertisers and marketers should prioritize interactive features to effectively encourage donation intentions. Future research should explore which design elements can effectively improve perceived interactivity. 
+
+\newpage
+
+# References
+
+::: {#refs custom-style="Bibliography"}
+:::

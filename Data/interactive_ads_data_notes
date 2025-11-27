@@ -21,3 +21,13 @@
 * Exported the simulated data using the most updated codes: 600 participants, two groups
 * Archived the historical version of the simulated data files
 * Note: please run "Code/interactive_ads_data_simulation_sample.R" to export the data
+
+**2025-11-23:**
+
+* Fix the issue of simualting data for two groups for "graphi_sim". There should not be difference between two groups 
+* Archived the historical version of the simulated data files
+
+**2025-11-25**
+
+* Update the data directory file regarding the keying, type, and value_labels of the "graphics quality" items 
+* Regenerated the simulated data files using the updated codes 

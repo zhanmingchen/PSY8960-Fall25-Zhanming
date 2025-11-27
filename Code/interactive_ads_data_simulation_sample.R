@@ -154,7 +154,7 @@ data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group
 
 # simulate data for graphi
 
-## [graphi_1] simulate data for two groups
+## [graphi_sim] simulate data for graphic quality
 
 ### initialize blank 'grapics_x_sim' columns (necessary? -> no)
 ### numeric(): https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/numeric 
@@ -162,28 +162,37 @@ data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group
 # dat_sim$graphi_2_sim <- numeric(length(dat_sim$group_sim))
 # dat_sim$graphi_3_sim <- numeric(length(dat_sim$group_sim))
 
-### initially the codes were ran one variable by another, but the codes were too long.
-### I created the data_generate_sample() to simplify
-### Use a for loop to further simplify
-n_graphi <- 3
-for (i in 1:n_graphi) {
-  col_title <- paste0("graphi_", i, "_sim") # paste() didn't work
-  dat_sim[[col_title]] <- data_generate_sample(
-    range_1 = 1,
-    range_2 = 7,
-    group_var = dat_sim$group_sim,
-    group_val_1 = 1,
-    group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
-  )
-}
+### n_graphi <- 3
+### for (i in 1:n_graphi) {
+###   col_title <- paste0("graphi_", i, "_sim") # paste() didn't work
+###   dat_sim[[col_title]] <- data_generate_sample(
+    ###     range_1 = 1,
+    ###     range_2 = 7,
+    ###     group_var = dat_sim$group_sim,
+    ###     group_val_1 = 1,
+    ###     group_val_2 = 2,
+    ###     prob_1 = prob_right_skewed,
+    ###     prob_2 = prob_left_skewed
+    ###   )
+  ### }
+
+dat_sim$graphi_1_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+table(dat_sim$graphi_1_sim)
+
+dat_sim$graphi_2_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+table(dat_sim$graphi_2_sim)
+
+dat_sim$graphi_3_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+table(dat_sim$graphi_3_sim)
 
 ### a quick check
 ### descr(): https://www.rdocumentation.org/packages/summarytools/versions/1.0.1/topics/summarytools-package
 dat_sim %>% dplyr::select(graphi_1_sim:graphi_3_sim) %>% summarytools::descr()
 
 # simulate data for six variables: inte, soci, symp, play, effi, dona
+### initially the codes were ran one variable by another, but the codes were too long.
+### I created the data_generate_sample() to simplify
+### Use a for loop to further simplify
 
 ## simulate data for inte_1 to inte_5, use replicate() and return a data frame
 n_inte <- 5
@@ -218,6 +227,14 @@ for (i in 1:n_soci) {
     prob_2 = prob_left_skewed
   )
 }
+
+dat_sim$soci_3_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
+dat_sim$soci_3_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+table(dat_sim$soci_3_sim)
+
+dat_sim$soci_5_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
+dat_sim$soci_5_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+table(dat_sim$soci_5_sim)
 
 ### a quick check
 dat_sim %>% dplyr::select(soci_1_sim:soci_5_sim) %>% summarytools::descr()
@@ -347,4 +364,5 @@ dat_sim
 
 # save the new file out and use for preregistration
 
-write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251117.csv", row.names = FALSE)
+write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251125.csv", row.names = FALSE)
+

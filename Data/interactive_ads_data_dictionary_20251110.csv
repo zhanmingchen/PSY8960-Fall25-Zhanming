@@ -5,9 +5,9 @@ group,Please type in the three-digit password presented at the end of the video 
 focus_1,Which of the following is not a state in the U.S.?,,,NA,factor,1 Florida 2 California 3 Texas 4 Illinois 5 Paris
 focus_2,Which of the following is NOT a shape?,,,NA,factor,1 Circle 2 Yellow 3 Square 4 Triangle
 focus_3,"Select ""Agree"" to show you are paying attention.",,,NA,factor,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-graphi_1,The graphics quality of the video was clear and sharp.,Graphics Quality,,NA,factor,1 True 2 False
-graphi_2,The video looked photo-realistic.,Graphics Quality,,NA,factor,1 True 2 False
-graphi_3,The video looked realistic.,Graphics Quality,,NA,factor,1 True 2 False
+graphi_1,The graphics quality of the video was clear and sharp.,Graphics Quality,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+graphi_2,The video looked photo-realistic.,Graphics Quality,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+graphi_3,The video looked realistic.,Graphics Quality,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 inte_1,I was in control of my navigation through this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 inte_2,I had some control over the content of this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 inte_3,I was able to interact with this video.,Interactivity ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
@@ -18,20 +18,20 @@ soci_2,It feels as if the girl is watching me and is aware of my presence.,Socia
 soci_3,The thought that the girl isn't real crossed my mind often.,Social Presence,,-1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 soci_4,The girl appears to be alive.,Social Presence,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 soci_5,"The girl is only a computerized image, not a real person.",Social Presence,,-1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_1,"While watching this advertisement, I feel upset:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_2,"While watching this advertisement, I feel distressed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_3,"While watching this advertisement, I feel sympathetic:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_4,"While watching this advertisement, I feel alarmed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_5,"While watching this advertisement, I feel grieved:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_6,"While watching this advertisement, I feel troubled:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_7,"While watching this advertisement, I feel compassionate:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_8,"While watching this advertisement, I feel perturbed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_9,"While watching this advertisement, I feel worried:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-symp_10,"While watching this advertisement, I feel disturbed:",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-play_1,I find this advertisement enjoyable:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-play_2,I find this advertisement exciting:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-play_3,I find this advertisement fun:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
-play_4,I find this advertisement makes me feel like I am in another world:,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_1,"While watching this advertisement, I feel upset.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_2,"While watching this advertisement, I feel distressed.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_3,"While watching this advertisement, I feel sympathetic.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_4,"While watching this advertisement, I feel alarmed.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_5,"While watching this advertisement, I feel grieved.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_6,"While watching this advertisement, I feel troubled.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_7,"While watching this advertisement, I feel compassionate.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_8,"While watching this advertisement, I feel perturbed.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_9,"While watching this advertisement, I feel worried.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+symp_10,"While watching this advertisement, I feel disturbed.",Sympathy,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_1,I find this advertisement enjoyable.,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_2,I find this advertisement exciting.,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_3,I find this advertisement fun.,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
+play_4,I find this advertisement makes me feel like I am in another world.,Perceived Playfulness,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 effi_1,My donation will make a positive difference.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 effi_2,Donations to this advertisement will make a meaningful difference.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree
 effi_3,It is valuable to make a donation to this advertisement.,Perceived Response Efficacy ,,1,numeric,1 Strongly Disagree 2 Disagree 3 Somewhat Disagree 4 Neither Agree nor Disagree 5 Somewhat Agree 6 Agree 7 Strongly Agree

@@ -1,0 +1,529 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  english,
+  man,floatsintext]{apa6}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Manuscript styling
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+% Table formatting
+\usepackage{longtable}
+\usepackage{lscape}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
+
+% Enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
+\makeatletter
+\newcommand\LastLTentrywidth{1em}
+\newlength\longtablewidth
+\setlength{\longtablewidth}{1in}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+
+% \setlength{\parindent}{0.5in}
+% \setlength{\parskip}{0pt plus 0pt minus 0pt}
+
+% Overwrite redefinition of paragraph and subparagraph by the default LaTeX template
+% See https://github.com/crsh/papaja/issues/292
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries\itshape\typesectitle}}
+
+\renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
+  {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
+  {-\z@\relax}%
+  {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
+\makeatother
+
+\makeatletter
+\usepackage{etoolbox}
+\patchcmd{\maketitle}
+  {\section{\normalfont\normalsize\abstractname}}
+  {\section*{\normalfont\normalsize\abstractname}}
+  {}{\typeout{Failed to patch abstract.}}
+\patchcmd{\maketitle}
+  {\section{\protect\normalfont{\@title}}}
+  {\section*{\protect\normalfont{\@title}}}
+  {}{\typeout{Failed to patch title.}}
+\makeatother
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\makeatother
+\keywords{interaction design, advertising, donation, behavior\newline\indent Word count: 1464}
+\usepackage{csquotes}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Effect of Interactivity on Donation Intention: Mediated Roles of Playfulness, Social Presence, Sympathy, and Perceived Response Efficacy},
+  pdfauthor={Zhanming Chen1},
+  pdflang={en-EN},
+  pdfkeywords={interaction design, advertising, donation, behavior},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Effect of Interactivity on Donation Intention: Mediated Roles of Playfulness, Social Presence, Sympathy, and Perceived Response Efficacy}
+\author{Zhanming Chen\textsuperscript{1}}
+\date{}
+
+
+\shorttitle{Effect of Interactivity on Donation Intention}
+
+\authornote{
+
+I want to thank Professor Moin Syed for his guidance and hands-on lectures, as well as all the students in PSY 8960 for their help and feedback.
+
+The authors made the following contributions. Zhanming Chen: Conceptualization, Methodology, Project administration, Visualization, Writing - Original Draft, Writing - Review \& Editing.
+
+Correspondence concerning this article should be addressed to Zhanming Chen, Department of Design Innovation, University of Minnesota, 89 Church Street SE, Minneapolis, MN 55455, USA. E-mail: \href{mailto:chen8475@umn.edu}{\nolinkurl{chen8475@umn.edu}}
+
+}
+
+\affiliation{\vspace{0.5cm}\textsuperscript{1} University of Minnesota}
+
+\abstract{%
+Interactive advertising can improve consumers' purchase intentions, but its effectiveness in promoting donation behaviors is less explored. This study investigates the relationship between perceived interactivity and donation intention. Data were collected from 600 MTurk participants using a between-subject experimental design. Our analysis shows that perceived interactivity positively influences donation intention. Additionally, this effect is mediated by perceived playfulness, sympathy, social presence, and perceived response efficacy.
+}
+
+
+
+\begin{document}
+\maketitle
+
+As one of the emerging forms of advertising, interactive advertising adds features to traditional advertising that allow consumers to interact with and participate in the advertisements (Bezjian-Avery, Calder, \& Iacobucci, 1998). These interactive features provided active control, two‑way communication, and a sense of reacting synchronically for the audience during the interaction process (Liu \& Shrum, 2002; Lombard \& Snyder-Duch, 2001; McMillan \& Hwang, 2002). Traditional advertising, such as static image advertisements in shopping malls, provided a one-way channel to deliver marketing information to the audience in a controlled, linear narrative structure. Compared to traditional advertising, interactive advertising has proven to be advantageous in increasing both consumers' attitudes and purchase intention (Macias, 2003) and further enhancing the overall marketing performance (Gu et al., 2022). An example of interactive advertising was the 2015 augmented-reality-based advertisement launched by Coca-Cola in the United States, titled ``Next time you're thirsty, drink an ad'' (Dipdrop Branding Solution, 2015). During basketball matches, audiences could enjoy a visual experience of a smooth transition from television to mobile devices, as they watched the pouring of Coke Zero from a bottle on the TV screen into a glass in the mobile application. Coca-Cola then offered a coupon code that could be redeemed for a bottle of Coke Zero (The Coca-Cola Company, 2015).
+
+While previous research on interactive advertising focused on its effects on consumption behaviors (e.g., Ahn, Ellie Jin, \& Seo, 2024) , the impact of interactive advertising on donation intentions and behaviors has been limitedly explored. In this study, we aim to understand how interactive advertisements influence donation attitudes and behaviors. Therefore, our research question is: how does the level of advertising interactivity affect the audience's donation intentions?
+
+\subsection{The Present Study}\label{the-present-study}
+
+Research has shown that the interactive design features of advertisements (e.g., buttons and body gestures) contribute to higher levels of purchase intention (Ahn et al., 2024; Gu et al., 2022). At the same time, the perceived interactivity of visual materials can positively influence the audience's emotions, such as perceived playfulness, levels of sympathy, and social presence (Hand \& Varan, 2009; Ide et al., 2021; Kang, Shin, \& Ponto, 2020). Furthermore, the audience's positive emotions, including perceived playfulness, sympathy, and social presence, were separately examined and shown to affect their perceptions related to efficacy and behavioral intentions (Chen, Dai, Yao, \& Li, 2019; Kim \& Yu, 2015). Additionally, researchers identified perceived response efficacy, a belief that consumers' help can make a meaningful difference for the beneficiaries (Septianto \& Paramita, 2021; Sharma \& Morwitz, 2016), as an important factor explaining donation behaviors.
+
+Building on the prior research, we propose the following five hypotheses (H1--H5):
+
+\begin{itemize}
+\tightlist
+\item
+  H1. Perceived interactivity of advertisements will be positively related to (a) perceived playfulness, (b) level of sympathy, and (c) social presence.
+\item
+  H2. Perceived playfulness will be positively related to (a) perceived response efficacy and (b) donation intention.
+\item
+  H3. Level of sympathy will be positively related to (a) perceived response efficacy and (b) donation intention.
+\item
+  H4. Social presence will be positively related to (a) perceived response efficacy and (b) donation intention.
+\item
+  H5. Perceived efficacy will be positively related to donation intention.
+\end{itemize}
+
+\section{Method}\label{method}
+
+We conducted a between-subjects online experiment with two groups: high-interactivity and low-interactivity (controlled group). The stimuli is designed as an ad that encourages participants to donate winter clothing to a local homeless girl. For interactive features, participants could either interact with the ad using a drag-and-drop feature to ``donate'' three pieces of clothing (i.e., high-interactivity) or watch the animation of the giving process of the three pieces of clothing (i.e., low-interactivity).
+
+The current study was \textbf{NOT} preregistered. Simulated data and codes are available at \href{https://osf.io/ept28/files}{OSF} and \href{https://github.com/zhanmingchen/PSY8960-Fall25-Zhanming}{GitHub}.
+
+\subsection{Participants and Procedure}\label{participants-and-procedure}
+
+The total sample in the current study consists of 600 US adults recruited from Amazon MTurk (\(M_{\text{age}}\) = 38.85, \(SD_{\text{age}}\) = 8.01). They were evenly assigned to one of the two conditions. The experiment begins with a consent process, and each participant interacts with the stimuli, followed by an online questionnaire including measures for variables and demographic questions. The questionnaire also includes measures for graphic qualities to ensure the differences of it between two groups are not significant, and three focus questions to make sure participants are answering the questions with their focus.
+
+The eligible criteria of participants include being adults, living in the US, being comfortable speaking English, and having access to a laptop and Internet to complete the tasks and survey using a web browser. Each participant are compensated a \$25 Amazon gift card.
+
+Here is a table of the detailed breakdown of participants' demographic information:
+
+\emph{Table 1}. Participants' demographic information breakdown.
+
+\begin{center}
+\begin{ThreePartTable}
+
+\begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:demographics table}Demographic Breakdowns of Participants}\\
+\toprule
+Item & \multicolumn{1}{c}{Category} & \multicolumn{1}{c}{Frequency} & \multicolumn{1}{c}{Percentage}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:demographics table} continued}}\\
+\toprule
+Item & \multicolumn{1}{c}{Category} & \multicolumn{1}{c}{Frequency} & \multicolumn{1}{c}{Percentage}\\
+\midrule
+\endhead
+Gender & Female & 191 & 31.83\%\\
+ & Male & 163 & 27.17\%\\
+ & Non-binary or third gender & 187 & 31.17\%\\
+Race & White & 90 & 15\%\\
+ & Black or African American & 93 & 15.5\%\\
+ & American Indian or Alaska Native & 103 & 17.17\%\\
+ & Asian & 109 & 18.17\%\\
+ & Native Hawaiian or Pacific Islander & 88 & 14.67\%\\
+Income & Less than \$10,000 & 40 & 6.67\%\\
+ & \$10,000 - \$19,999 & 56 & 9.33\%\\
+ & \$20,000 - \$29,999 & 44 & 7.33\%\\
+ & \$30,000 - \$39,999 & 50 & 8.33\%\\
+ & \$40,000 - \$49,999 & 47 & 7.83\%\\
+ & \$50,000 - \$59,999 & 42 & 7\%\\
+ & \$60,000 - \$69,999 & 44 & 7.33\%\\
+ & \$70,000 - \$79,999 & 56 & 9.33\%\\
+ & \$80,000 - \$89,999 & 52 & 8.67\%\\
+ & \$90,000 - \$99,999 & 51 & 8.5\%\\
+ & \$100,000 - \$149,999 & 51 & 8.5\%\\
+ & More than \$150,000 & 43 & 7.17\%\\
+Education & Less than high school & 80 & 13.33\%\\
+ & High school graduate & 84 & 14\%\\
+ & 2 year degree & 88 & 14.67\%\\
+ & 4 year degree & 84 & 14\%\\
+ & Professional degree & 66 & 11\%\\
+ & Doctorate & 83 & 13.83\%\\
+\bottomrule
+\end{longtable}
+
+\end{ThreePartTable}
+\end{center}
+
+\subsection{Measures}\label{measures}
+
+\subsubsection{Perceived Graphics Quality.}\label{perceived-graphics-quality.}
+
+As a manipulation check, participants completed a three-item, 7-point Likert scale (Kang et al., 2020), in which they were asked questions that assesses their perceived graphics quality (Cronbach's alpha = -0.02).
+
+\subsubsection{Perceived Interactivity.}\label{perceived-interactivity.}
+
+Participants completed a five-item, 7-point Likert scale (Wu, 2005; Yim, Chu, \& Sauer, 2017), in which they were asked to answer questions that assesses their perceived interactivity (Cronbach's alpha = 0.85).
+
+\subsubsection{Social Presence.}\label{social-presence.}
+
+Participants completed a ten-item, 7-point Likert scale (Higgins, Zibrek, Cabral, Egan, \& McDonnell, 2022), in which they were asked to answer questions that assesses their social presence (Cronbach's alpha = 0.84).
+
+\subsubsection{Sympathy.}\label{sympathy.}
+
+Participants completed a 10-item, 7-point Likert scale (Baberini, Coleman, Slovic, \& Västfjäll, 2015), in which they were asked to answer questions that assesses their sympathy (Cronbach's alpha = 0.91).
+
+\subsubsection{Perceived Playfulness.}\label{perceived-playfulness.}
+
+Participants completed a four-item, 7-point Likert scale (Kang et al., 2020), in which they were asked to answer questions that assesses their perceived playfulness (Cronbach's alpha = 0.81).
+
+\subsubsection{Perceived Response Efficacy.}\label{perceived-response-efficacy.}
+
+Participants completed a four-item, 7-point Likert scale (Cryder, Loewenstein, \& Scheines, 2013; Sharma \& Morwitz, 2016), in which they were asked to answer questions that assesses their perceived response efficacy (Cronbach's alpha = 0.81).
+
+\subsubsection{Donation Intention.}\label{donation-intention.}
+
+Participants completed a three-item, 7-point Likert scale (Li \& Yin, 2022), in which they were asked to answer questions that assesses their donation intention (Cronbach's alpha = 0.81).
+
+\subsection{Data analysis}\label{data-analysis}
+
+We used R (Version 4.5.1; R Core Team, 2024) and the R-packages \emph{apaTables} (Stanley, 2021), \emph{base} (Version 4.5.1; R Core Team, 2024), \emph{devtools} (Version 2.4.6; Wickham, Hester, Chang, \& Bryan, 2025), \emph{dplyr} (Version 1.1.4; Wickham, François, Henry, Müller, \& Vaughan, 2023, 2023), \emph{faux} (Version 1.2.3; DeBruine, 2025, 2025), \emph{ggplot2} (Version 4.0.0; Wickham, 2016, 2016), \emph{groundhog} (Version 3.2.3; Simonsohn \& Gruson, 2025, 2025), \emph{knitr} (Version 1.50; Xie, 2015), \emph{labelled} (Version 2.16.0; Larmarange, 2025, 2025), \emph{missMethods} (Version 0.4.0; Rockel, 2022, 2022), \emph{papaja} (Version 0.1.4; Aust \& Barth, 2025, 2025), \emph{psych} (Version 2.5.6; William Revelle, 2025, 2025), \emph{summarytools} (Version 1.1.4; Comtois, 2025, 2025), \emph{tinylabels} (Version 0.2.5; Barth, 2025, 2025), and \emph{usethis} (Version 3.2.1; Wickham, Bryan, Barrett, \& Teucher, 2025) for all our analyses.
+
+\section{Results}\label{results}
+
+\subsection{Manipulation Tests}\label{manipulation-tests}
+
+A series of regression analyses and mediation analyses were performed using SPSS. The results revealed that one of the emotions and cognition factors (sympathy) and perceived response efficacy serially mediate the effect of perceived interactivity on donation intention while playfulness and social presence directly influences donation intention. We also found that the perceived facial expressions of the beneficiaries influence consumers' donation intention through perceived playfulness and sympathy. The final model is presented in Figure 1.
+
+Discussion \& Implications. Our results suggest interactive features (e.g., buttons and gestures) could increase donation intention especially by enhancing cognitive assessment of consumers' efficacy. Unlike previous studies, our study highlighted the positive emotional heuristics (happy face leading to playfulness and donation intention). Considering the context of ad that highlights the suffering of the victims, this finding may imply the positive emotional experiences become very important in the context of interactive advertisement. Our study extends the understanding of advertising in the domain of donation behaviors by advocating the use of interactive features.
+
+Overall, the graphic quality of the stimuli for two participant groups are well perceived (\(M_{\text{graphic quality}}\) = 5.68, \(SD_{\text{graphic quality}}\) = 0.89). The results from a Welch's independent samples \emph{t}-test indicated no significant differences between the two groups, \emph{t}(597.16) = -1.43, \emph{p} = 0.153 (see Figure 1).
+
+\pandocbounded{\includegraphics[keepaspectratio]{interactive_ads_report_papaja_20251127_files/figure-latex/graphi graph-1.pdf}}
+
+\emph{Figure 1}. Perceived graphic quality of stimuli.
+
+According to the results from a Welch's independent samples \emph{t}-test that compares the perceived interactivity of the stimuli between the high-interactivity group (\(M_{\text{high interactivity}}\) = 5.66, \(SD_{\text{high interactivity}}\) = 0.71) and the low-interactivity group (\(M_{\text{low interactivity}}\) = 2.36, \(SD_{\text{low interactivity}}\) = 0.78), there are significant differences between the two groups, \emph{t}(592.02) = 54.40, \emph{p} \textless{} .001 (see Figure 2).
+
+\pandocbounded{\includegraphics[keepaspectratio]{interactive_ads_report_papaja_20251127_files/figure-latex/interactivity graph-1.pdf}}
+
+\emph{Figure 2}. Perceived interactivity of stimuli.
+
+\subsection{Hypotheses Validation}\label{hypotheses-validation}
+
+A Pearson correlation test was also conducted to test the hypotheses. All hypotheses were supported (see the table below).
+
+\begin{center}
+\begin{ThreePartTable}
+
+\begin{longtable}{llll}\noalign{\getlongtablewidth\global\LTcapwidth=\longtablewidth}
+\caption{\label{tab:hypothesis table}Hypotheses Test Results}\\
+\toprule
+Hypothesis & \multicolumn{1}{c}{Pairs} & \multicolumn{1}{c}{t} & \multicolumn{1}{c}{p}\\
+\midrule
+\endfirsthead
+\caption*{\normalfont{Table \ref{tab:hypothesis table} continued}}\\
+\toprule
+Hypothesis & \multicolumn{1}{c}{Pairs} & \multicolumn{1}{c}{t} & \multicolumn{1}{c}{p}\\
+\midrule
+\endhead
+H1a & Interactivity-Playfulness & 34.35 & < .001\\
+H1b & Interactivity-Sympathy & 43.98 & < .001\\
+H1c & Interactivity-Social presence & 37.32 & < .001\\
+H2a & Playfulness-Response efficacy & 33.10 & < .001\\
+H2b & Playfulness-Donation intention & 32.43 & < .001\\
+H3a & Sympathy-Response efficacy & 40.76 & < .001\\
+H3b & Sympathy-Donation intention & 40.80 & < .001\\
+H4a & Social presence-Response efficacy & 34.20 & < .001\\
+H4b & Social presence-Donation intention & 35.40 & < .001\\
+H5 & Response efficacy-Donation intention & 34.12 & < .001\\
+\bottomrule
+\end{longtable}
+
+\end{ThreePartTable}
+\end{center}
+
+\section{Discussion}\label{discussion}
+
+The purpose of this study was to examine how perceived interactivity relates to donation intention in advertisement design. The results supported our hypotheses, indicating that this relationship is mediated by perceived playfulness, sympathy, social presence, and response efficacy. Consequently, these findings suggest that advertisers and marketers should prioritize interactive features to effectively encourage donation intentions. Future research should explore which design elements can effectively improve perceived interactivity.
+
+\newpage
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-ahn_etal_WhyPeopleInteract_2024}
+Ahn, S., Ellie Jin, B., \& Seo, H. (2024). Why do people interact and buy in the {Metaverse}? {Self-Expansion} perspectives and the impact of hedonic adaptation. \emph{Journal of Business Research}, \emph{175}, 114557. \url{https://doi.org/10.1016/j.jbusres.2024.114557}
+
+\bibitem[\citeproctext]{ref-R-papaja}
+Aust, F., \& Barth, M. (2025). \emph{{papaja}: {Prepare} reproducible {APA} journal articles with {R Markdown}}. \url{https://doi.org/10.32614/CRAN.package.papaja}
+
+\bibitem[\citeproctext]{ref-baberini_etal_ExaminingEffectsPhotographic_2015}
+Baberini, M., Coleman, C.-L., Slovic, P., \& Västfjäll, D. (2015). Examining the {Effects} of {Photographic Attributes} on {Sympathy}, {Emotions}, and {Donation Behavior}. \emph{Visual Communication Quarterly}, \emph{22}(2), 118--128. \url{https://doi.org/10.1080/15551393.2015.1061433}
+
+\bibitem[\citeproctext]{ref-R-tinylabels}
+Barth, M. (2025). \emph{{tinylabels}: Lightweight variable labels}. \url{https://doi.org/10.32614/CRAN.package.tinylabels}
+
+\bibitem[\citeproctext]{ref-bezjian-avery_etal_NewMediaInteractive_1998}
+Bezjian-Avery, A., Calder, B., \& Iacobucci, D. (1998). New media interactive advertising vs. Traditional advertising. \emph{Journal of Advertising Research}, \emph{38}(4), 23--32.
+
+\bibitem[\citeproctext]{ref-chen_etal_DonateTimeMoney_2019}
+Chen, Y., Dai, R., Yao, J., \& Li, Y. (2019). Donate {Time} or {Money}? {The Determinants} of {Donation Intention} in {Online Crowdfunding}. \emph{Sustainability}, \emph{11}(16). \url{https://doi.org/10.3390/su11164269}
+
+\bibitem[\citeproctext]{ref-R-summarytools}
+Comtois, D. (2025). \emph{Summarytools: Tools to quickly and neatly summarize data}. \url{https://doi.org/10.32614/CRAN.package.summarytools}
+
+\bibitem[\citeproctext]{ref-cryder_etal_DonorDetails_2013}
+Cryder, C. E., Loewenstein, G., \& Scheines, R. (2013). The donor is in the details. \emph{Organizational Behavior and Human Decision Processes}, \emph{120}(1), 15--23. \url{https://doi.org/10.1016/j.obhdp.2012.08.002}
+
+\bibitem[\citeproctext]{ref-R-faux}
+DeBruine, L. (2025). \emph{Faux: Simulation for factorial designs}. Zenodo. \url{https://doi.org/10.5281/zenodo.2669586}
+
+\bibitem[\citeproctext]{ref-dipdropbrandingsolution_CocaColaCreates_2015}
+Dipdrop Branding Solution. (2015). \emph{Coca cola {Creates First Ever} {Drinkable} {Advertising Campaign}}.
+
+\bibitem[\citeproctext]{ref-gu_etal_WhatUsersCare_2022}
+Gu, C., Lin, S., Sun, J., Yang, C., Chen, J., Jiang, Q., \ldots{} Wei, W. (2022). What do users care about? {Research} on user behavior of mobile interactive video advertising. \emph{Heliyon}, \emph{8}(10), e10910. \url{https://doi.org/10.1016/j.heliyon.2022.e10910}
+
+\bibitem[\citeproctext]{ref-hand_varan_InteractiveStoriesAudience_2009}
+Hand, S., \& Varan, D. (2009). \emph{Interactive stories and the audience: {Why} empathy is important}. \emph{7}(3). \url{https://doi.org/10.1145/1594943.1594951}
+
+\bibitem[\citeproctext]{ref-higgins_etal_SympathyDigitalInfluence_2022}
+Higgins, D., Zibrek, K., Cabral, J., Egan, D., \& McDonnell, R. (2022). Sympathy for the digital: {Influence} of synthetic voice on affinity, social presence and empathy for photorealistic virtual humans. \emph{Computers \& Graphics}, \emph{104}, 116--128. \url{https://doi.org/10.1016/j.cag.2022.03.009}
+
+\bibitem[\citeproctext]{ref-ide_etal_EffectsAvatarsSymbolic_2021}
+Ide, M., Oshima, S., Mori, S., Yoshimi, M., Ichino, J., \& Tano, S. (2021). Effects of {Avatar}'s {Symbolic Gesture} in {Virtual Reality Brainstorming}. \emph{Proceedings of the 32nd {Australian Conference} on {Human-Computer Interaction}}, 170--177. New York, NY, USA: Association for Computing Machinery. \url{https://doi.org/10.1145/3441000.3441081}
+
+\bibitem[\citeproctext]{ref-kang_etal_How3DVirtual_2020}
+Kang, H. J., Shin, J., \& Ponto, K. (2020). How {3D Virtual Reality Stores Can Shape Consumer Purchase Decisions}: {The Roles} of {Informativeness} and {Playfulness}. \emph{Journal of Interactive Marketing}, \emph{49}(1), 70--85. \url{https://doi.org/10.1016/j.intmar.2019.07.002}
+
+\bibitem[\citeproctext]{ref-kim_yu_EffectCharacteristicsModels_2015}
+Kim, N., \& Yu, S. Y. (2015). Effect of the characteristics of models of public service advertisements on public service behavior intension: {Mediated} effect on attitude of {PSA}. \emph{Indian Journal of Science and Technology}, \emph{8}(S8), 250--257. \url{https://doi.org/10.17485/ijst/2015/v8iS8/70526}
+
+\bibitem[\citeproctext]{ref-R-labelled}
+Larmarange, J. (2025). \emph{Labelled: Manipulating labelled data}. Retrieved from \url{https://CRAN.R-project.org/package=labelled}
+
+\bibitem[\citeproctext]{ref-li_yin_FacialExpressionsBeneficiaries_2022}
+Li, M.-R., \& Yin, C.-Y. (2022). Facial expressions of beneficiaries and donation intentions of potential donors: {Effects} of the number of beneficiaries in charity advertising. \emph{Journal of Retailing and Consumer Services}, \emph{66}, 102915. \url{https://doi.org/10.1016/j.jretconser.2022.102915}
+
+\bibitem[\citeproctext]{ref-liu_shrum_WhatInteractivityIt_2002}
+Liu, Y., \& Shrum, L. J. (2002). What is {Interactivity} and is it {Always Such} a {Good Thing}? {Implications} of {Definition}, {Person}, and {Situation} for the {Influence} of {Interactivity} on {Advertising Effectiveness}. \emph{Journal of Advertising}, \emph{31}(4), 53--64. \url{https://doi.org/10.1080/00913367.2002.10673685}
+
+\bibitem[\citeproctext]{ref-lombard_snyder-duch_InteractiveAdvertisingPresence_2001}
+Lombard, M., \& Snyder-Duch, J. (2001). Interactive {Advertising} and {Presence}. \emph{Journal of Interactive Advertising}, \emph{1}(2), 56--65. \url{https://doi.org/10.1080/15252019.2001.10722051}
+
+\bibitem[\citeproctext]{ref-macias_PreliminaryStructuralEquation_2003}
+Macias, W. (2003). A {Preliminary Structural Equation Model} of {Comprehension} and {Persuasion} of {Interactive Advertising Brand Web Sites}. \emph{Journal of Interactive Advertising}, \emph{3}(2), 36--48. \url{https://doi.org/10.1080/15252019.2003.10722072}
+
+\bibitem[\citeproctext]{ref-mcmillan_hwang_MeasuresPerceivedInteractivity_2002}
+McMillan, S. J., \& Hwang, J.-S. (2002). Measures of {Perceived Interactivity}: {An Exploration} of the {Role} of {Direction} of {Communication}, {User Control}, and {Time} in {Shaping Perceptions} of {Interactivity}. \emph{Journal of Advertising}, \emph{31}(3), 29--42. \url{https://doi.org/10.1080/00913367.2002.10673674}
+
+\bibitem[\citeproctext]{ref-R-base}
+R Core Team. (2024). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
+
+\bibitem[\citeproctext]{ref-R-missMethods}
+Rockel, T. (2022). \emph{missMethods: Methods for missing data}. \url{https://doi.org/10.32614/CRAN.package.missMethods}
+
+\bibitem[\citeproctext]{ref-septianto_paramita_SadSmilingHow_2021}
+Septianto, F., \& Paramita, W. (2021). Sad but smiling? {How} the combination of happy victim images and sad message appeals increase prosocial behavior. \emph{Marketing Letters}, \emph{32}(1), 91--110. \url{https://doi.org/10.1007/s11002-020-09553-5}
+
+\bibitem[\citeproctext]{ref-sharma_morwitz_SavingMassesImpact_2016}
+Sharma, E., \& Morwitz, V. G. (2016). Saving the masses: {The} impact of perceived efficacy on charitable giving to single vs. Multiple beneficiaries. \emph{Organizational Behavior and Human Decision Processes}, \emph{135}, 45--54. \url{https://doi.org/10.1016/j.obhdp.2016.06.001}
+
+\bibitem[\citeproctext]{ref-R-groundhog}
+Simonsohn, U., \& Gruson, H. (2025). \emph{Groundhog: Version-control for CRAN, GitHub, and GitLab packages}. Retrieved from \url{https://CRAN.R-project.org/package=groundhog}
+
+\bibitem[\citeproctext]{ref-R-apaTables}
+Stanley, D. (2021). \emph{apaTables: Create american psychological association (APA) style tables}. Retrieved from \url{https://CRAN.R-project.org/package=apaTables}
+
+\bibitem[\citeproctext]{ref-thecoca-colacompany_CokeZeroTips_2015}
+The Coca-Cola Company. (2015). Coke {Zero}™ {Tips Off Drinkable Advertising Campaign} at {NCAA}\textregistered{} {Men}'s {Final Four}\textregistered{} {In Indianapolis}. https://www.coca-colacompany.com/media-center/coke-zero-tips-off-advertising-campaign-at-ncaa-final-four.
+
+\bibitem[\citeproctext]{ref-R-ggplot2}
+Wickham, H. (2016). \emph{ggplot2: Elegant graphics for data analysis}. Springer-Verlag New York. Retrieved from \url{https://ggplot2.tidyverse.org}
+
+\bibitem[\citeproctext]{ref-R-usethis}
+Wickham, H., Bryan, J., Barrett, M., \& Teucher, A. (2025). \emph{Usethis: Automate package and project setup}. \url{https://doi.org/10.32614/CRAN.package.usethis}
+
+\bibitem[\citeproctext]{ref-R-dplyr}
+Wickham, H., François, R., Henry, L., Müller, K., \& Vaughan, D. (2023). \emph{Dplyr: A grammar of data manipulation}. Retrieved from \url{https://CRAN.R-project.org/package=dplyr}
+
+\bibitem[\citeproctext]{ref-R-devtools}
+Wickham, H., Hester, J., Chang, W., \& Bryan, J. (2025). \emph{Devtools: Tools to make developing r packages easier}. \url{https://doi.org/10.32614/CRAN.package.devtools}
+
+\bibitem[\citeproctext]{ref-R-psych}
+William Revelle. (2025). \emph{Psych: Procedures for psychological, psychometric, and personality research}. Evanston, Illinois: Northwestern University. Retrieved from \url{https://CRAN.R-project.org/package=psych}
+
+\bibitem[\citeproctext]{ref-wu_MediatingRolePerceived_2005}
+Wu, G. (2005). The {Mediating Role} of {Perceived Interactivity} in the {Effect} of {Actual Interactivity} on {Attitude Toward} the {Website}. \emph{Journal of Interactive Advertising}, \emph{5}(2), 29--39. \url{https://doi.org/10.1080/15252019.2005.10722099}
+
+\bibitem[\citeproctext]{ref-R-knitr}
+Xie, Y. (2015). \emph{Dynamic documents with {R} and knitr} (2nd ed.). Boca Raton, Florida: Chapman; Hall/CRC. Retrieved from \url{https://yihui.org/knitr/}
+
+\bibitem[\citeproctext]{ref-yim_etal_AugmentedRealityTechnology_2017}
+Yim, M. Y.-C., Chu, S.-C., \& Sauer, P. L. (2017). Is {Augmented Reality Technology} an {Effective Tool} for {E-commerce}? {An Interactivity} and {Vividness Perspective}. \emph{Journal of Interactive Marketing}, \emph{39}(1), 89--103. \url{https://doi.org/10.1016/j.intmar.2017.04.001}
+
+\end{CSLReferences}
+
+
+\end{document}
