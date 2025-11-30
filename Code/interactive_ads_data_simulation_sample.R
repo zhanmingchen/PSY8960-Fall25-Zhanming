@@ -98,9 +98,11 @@ dat_sim$focus_3_sim <- 6
 # set parameters for different probabilities
 
 ## left skewed and right skewed 7-point data
+## Updates 20251130: the descriptions of skew were reversed in the last version. 
+## "Left skew means that the tail pulls to the left, and so most of the distribution is over the right side."
 
-prob_right_skewed <- c(.03, .04, .05, .08, .10, .30, .40)
-prob_left_skewed <- c(.40, .30, .10, .08, .05, .04, .03)
+prob_left_skewed <- c(.03, .04, .05, .08, .10, .30, .40)
+prob_right_skewed <- c(.40, .30, .10, .08, .05, .04, .03)
 
 # create a function for the repetitive data generating process
 ## Documentation for a function in R: https://r-pkgs.org/man.html 
@@ -171,18 +173,18 @@ data_generate_sample <- function(range_1, range_2, group_var, group_val_1, group
     ###     group_var = dat_sim$group_sim,
     ###     group_val_1 = 1,
     ###     group_val_2 = 2,
-    ###     prob_1 = prob_right_skewed,
-    ###     prob_2 = prob_left_skewed
+    ###     prob_1 = prob_left_skewed,
+    ###     prob_2 = prob_right_skewed
     ###   )
   ### }
 
-dat_sim$graphi_1_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+dat_sim$graphi_1_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_left_skewed)
 table(dat_sim$graphi_1_sim)
 
-dat_sim$graphi_2_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+dat_sim$graphi_2_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_left_skewed)
 table(dat_sim$graphi_2_sim)
 
-dat_sim$graphi_3_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_right_skewed)
+dat_sim$graphi_3_sim <- sample(1:7, size = 600, replace = TRUE, prob = prob_left_skewed)
 table(dat_sim$graphi_3_sim)
 
 ### a quick check
@@ -204,8 +206,8 @@ for (i in 1:n_inte) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 
@@ -223,17 +225,17 @@ for (i in 1:n_soci) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 
-dat_sim$soci_3_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
-dat_sim$soci_3_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+dat_sim$soci_3_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+dat_sim$soci_3_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
 table(dat_sim$soci_3_sim)
 
-dat_sim$soci_5_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
-dat_sim$soci_5_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+dat_sim$soci_5_sim[dat_sim$group_sim == 1] <- sample(1:7, size = 300, replace = TRUE, prob = prob_right_skewed)
+dat_sim$soci_5_sim[dat_sim$group_sim == 2] <- sample(1:7, size = 300, replace = TRUE, prob = prob_left_skewed)
 table(dat_sim$soci_5_sim)
 
 ### a quick check
@@ -250,8 +252,8 @@ for (i in 1:n_symp) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 
@@ -269,8 +271,8 @@ for (i in 1:n_play) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 
@@ -288,8 +290,8 @@ for (i in 1:n_effi) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 
@@ -307,8 +309,8 @@ for (i in 1:n_dona) {
     group_var = dat_sim$group_sim,
     group_val_1 = 1,
     group_val_2 = 2,
-    prob_1 = prob_right_skewed,
-    prob_2 = prob_left_skewed
+    prob_1 = prob_left_skewed,
+    prob_2 = prob_right_skewed
   )
 }
 

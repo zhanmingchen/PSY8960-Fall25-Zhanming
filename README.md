@@ -1,11 +1,46 @@
-This is a template directory structure to use as a starting point for projects.
+## Project Description
 
-It consists of the minimum set of folders and files for any project. Specific projects will likely require additional folders and files.
+This repository contains a course project for PSY 8960 (Fall 2025), which is about creating and managing reproducible research projects. 
+The project explores how perceived interactivity in advertising relates to donation intentions using simulated data. 
 
-This README file is meant to be "outward facing," largely for external people to know how to navigate the directory.
+## Directory Structure
 
-The directory structure is as follows (with descriptions of what might go in each)
+PSY8960-Fall25-Zhanming/
+├─ Archives/                                            # Non active materials kept for posterity
+│  ├─ archived_data_testing/                            # Non active materials for data simulation
+│  └─ archived_report_drafts/                           # Non active materials for report generation
+├─ Code/                                                # Code/scripts for data simulating, cleaning, analysis
+├─ Data/                                                # All project data and data dictionary
+├─ Reports/                                             # Manuscripts and knitted reports
+│  └─ interactive_ads_report_papaja_20251127_files/     # Figures generated when knitting
+├─ Procedure/                                           # Study-related materials and course practice files
+├─ PSY8960-Fall25-Zhanming.Rproj                        # RStudio project entry
+└─ README.md                                            # Project overview (this file)
 
-{Project_Name}\ |--- Admin/ (Project administration, correspondence, participant logs)\       |--- Ethics/ (IRB application and approval, staff training certificates)\       |--- Admin_Notes.txt\ |--- Archives/ (any non active materials kept for posterity)\       |--- Archives_Notes.txt\ |--- Code/ (code/scripts for cleaning, wrangling, analysis, etc.)\       |--- Code_Notes.txt\ |--- Data/ (all project data)\       |--- Raw_Data/ (best to keep raw data separate, possibly read-only)\       |--- Data_Notes.txt\ |--- Procedure/ (study-related materials, protocols, measures, manuals)\       |--- Procedure_Notes.txt\ |--- Reports/ (manuscripts for publication, interim summaries, conference presentations)\       |--- Preregistration/ (final version of posted prereg and related materials)\       |--- Reports_Notes.txt\ Notes_to_File.txt\ README.md\
+## Quick guides for reproducibility check 
 
-The "Notes to File" and "Notes" files within each sub-directory are meant to be "inward-facing," i.e., notes for the project team. Accordingly, you may want to add these to .gitignore so that they don't appear in the public repo.
+### Open the project
+
+* Clone or download this repository. 
+* Open `PSY8960-Fall25-Zhanming.Rproj` in RStudio.
+
+### Data Dictionary
+
+* Dictionary: `/Data/interactive_ads_data_dictionary_20251110.csv`
+
+### Data Simulation
+
+* Script: `/Code/interactive_ads_data_simulation_sample.R`
+* Notes: 
+  * Run this script line by line to generate simulated data 
+  * (Optional) Install packages
+  * (Optional) Change the output file name by editing the last line: `write.csv(dat_sim, "./Data/interactive_ads_data_simulated_sample_20251125.csv", row.names = FALSE)`
+  * Current simulated data file: `/Data/interactive_ads_data_simulated_sample_20251125.csv` 
+
+### Report Generation
+
+* R Markdown file: `/Reports/interactive_ads_report_papaja_20251127.Rmd`
+* Notes: 
+  * Make sure the required packages are installed 
+  * Click Knit
+  * Current output report: `/Reports/interactive_ads_report_papaja_20251127.pdf `
