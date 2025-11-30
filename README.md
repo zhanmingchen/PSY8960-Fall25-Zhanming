@@ -17,7 +17,7 @@ PSY8960-Fall25-Zhanming/
 ├─ Procedure/                                           # Study-related materials and course practice files
 ├─ PSY8960-Fall25-Zhanming.Rproj                        # RStudio project entry
 └─ README.md                                            # Project overview (this file)
-```
+
 
 ## Quick guides for reproducibility check 
 

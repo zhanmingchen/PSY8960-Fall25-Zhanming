@@ -25,10 +25,10 @@ authornote: |
   
 
 abstract: |
-  Interactive advertising can improve consumers' purchase intentions, but its effectiveness in promoting donation behaviors is less explored. This study investigates the relationship between perceived interactivity and donation intention. Data were collected from 600 MTurk participants using a between-subject  experimental design. Our analysis shows that perceived interactivity positively influences donation intention. Additionally, this effect is mediated by perceived playfulness, sympathy, social presence, and perceived response efficacy. 
+  Interactive advertising can improve consumers' purchase intentions, but its effectiveness in promoting donation behaviors is less explored. This study investigates the relationship between perceived interactivity and donation intention. Data were collected from 600 MTurk participants through a between-subject experimental design. Our findings indicate that perceived interactivity positively affects donation intention. Furthermore, this influence is mediated by perceived playfulness, sympathy, social presence, and perceived response efficacy. 
   
 keywords          : "interaction design, advertising, donation, behavior"
-wordcount         : "1464" # NOTE: update here before submission
+wordcount         : "1230" # NOTE: update here before submission
 bibliography      : "r-references.bib"
 
 floatsintext      : yes
@@ -65,13 +65,13 @@ dat_sim <- read.csv("../Data/interactive_ads_data_simulated_sample_20251125.csv"
 names(dat_sim)
 ```
 
-As one of the emerging forms of advertising, interactive advertising adds features to traditional advertising that allow consumers to interact with and participate in the advertisements [@bezjian-avery_etal_NewMediaInteractive_1998]. These interactive features provided active control, two‑way communication, and a sense of reacting synchronically for the audience during the interaction process [@liu_shrum_WhatInteractivityIt_2002; @lombard_snyder-duch_InteractiveAdvertisingPresence_2001; @mcmillan_hwang_MeasuresPerceivedInteractivity_2002]. Traditional advertising, such as static image advertisements in shopping malls, provided a one-way channel to deliver marketing information to the audience in a controlled, linear narrative structure. Compared to traditional advertising, interactive advertising has proven to be advantageous in increasing both consumers’ attitudes and purchase intention [@macias_PreliminaryStructuralEquation_2003] and further enhancing the overall marketing performance [@gu_etal_WhatUsersCare_2022]. An example of interactive advertising was the 2015 augmented-reality-based advertisement launched by Coca-Cola in the United States, titled “Next time you’re thirsty, drink an ad” [@dipdropbrandingsolution_CocaColaCreates_2015]. During basketball matches, audiences could enjoy a visual experience of a smooth transition from television to mobile devices, as they watched the pouring of Coke Zero from a bottle on the TV screen into a glass in the mobile application. Coca-Cola then offered a coupon code that could be redeemed for a bottle of Coke Zero [@thecoca-colacompany_CokeZeroTips_2015].
+As one of the emerging forms of advertising, interactive advertising adds features to traditional advertising that allow consumers to interact with and participate in the ads [@bezjian-avery_etal_NewMediaInteractive_1998]. These interactive features provide active control, two-way communication, and a sense of synchronous reaction for the audience during interaction [@liu_shrum_WhatInteractivityIt_2002; @lombard_snyder-duch_InteractiveAdvertisingPresence_2001; @mcmillan_hwang_MeasuresPerceivedInteractivity_2002]. Traditional advertising, such as static image ads in shopping malls, provided a one-way channel for delivering marketing information to the audience in a controlled, linear narrative. Compared to traditional advertising, interactive advertising has been shown to increase both consumers’ attitudes and purchase intentions [@macias_PreliminaryStructuralEquation_2003] and further improve overall marketing performance [@gu_etal_WhatUsersCare_2022]. An example of interactive advertising was the 2015 augmented-reality-based ad launched by Coca-Cola in the United States, titled “Next time you’re thirsty, drink an ad” [@dipdropbrandingsolution_CocaColaCreates_2015]. During basketball games, viewers could enjoy a visual experience of a smooth transition from TV to mobile devices, as they watched Coke Zero being poured from a bottle on the TV screen into a glass in the mobile app. Coca-Cola then offered a coupon code redeemable for a bottle of Coke Zero [@thecoca-colacompany_CokeZeroTips_2015].
 
-While previous research on interactive advertising focused on its effects on consumption behaviors [e.g., @ahn_etal_WhyPeopleInteract_2024] , the impact of interactive advertising on donation intentions and behaviors has been limitedly explored. In this study, we aim to understand how interactive advertisements influence donation attitudes and behaviors. Therefore, our research question is: how does the level of advertising interactivity affect the audience’s donation intentions?
+While previous research on interactive advertising has focused on its effects on consumption behaviors [e.g., @ahn_etal_WhyPeopleInteract_2024], the impact of interactive advertising on donation intentions and behaviors has been minimally explored. In this study, we aim to understand how interactive advertisements influence donation attitudes and behaviors. Therefore, our research question is: how does the level of advertising interactivity impact the audience’s donation intentions?
 
 ## The Present Study
 
-Research has shown that the interactive design features of advertisements (e.g., buttons and body gestures) contribute to higher levels of purchase intention [@ahn_etal_WhyPeopleInteract_2024; @gu_etal_WhatUsersCare_2022]. At the same time, the perceived interactivity of visual materials can positively influence the audience’s emotions, such as perceived playfulness, levels of sympathy, and social presence [@kang_etal_How3DVirtual_2020; @hand_varan_InteractiveStoriesAudience_2009; @ide_etal_EffectsAvatarsSymbolic_2021]. Furthermore, the audience’s positive emotions, including perceived playfulness, sympathy, and social presence, were separately examined and shown to affect their perceptions related to efficacy and behavioral intentions [@chen_etal_DonateTimeMoney_2019; @kim_yu_EffectCharacteristicsModels_2015]. Additionally, researchers identified perceived response efficacy, a belief that consumers’ help can make a meaningful difference for the beneficiaries [@sharma_morwitz_SavingMassesImpact_2016; @septianto_paramita_SadSmilingHow_2021], as an important factor explaining donation behaviors.
+Research has shown that interactive design features of advertisements (e.g., buttons and body gestures) contribute to higher purchase intention [@ahn_etal_WhyPeopleInteract_2024; @gu_etal_WhatUsersCare_2022]. At the same time, the perceived interactivity of visual materials can positively influence the audience’s emotions, such as perceived playfulness, levels of sympathy, and social presence [@kang_etal_How3DVirtual_2020; @hand_varan_InteractiveStoriesAudience_2009; @ide_etal_EffectsAvatarsSymbolic_2021]. Furthermore, the audience’s positive emotions, including perceived playfulness, sympathy, and social presence, were examined separately and shown to affect perceptions of efficacy and behavioral intentions [@chen_etal_DonateTimeMoney_2019; @kim_yu_EffectCharacteristicsModels_2015]. Additionally, researchers identified perceived response efficacy, the belief that consumers’ help can make a meaningful difference for beneficiaries [@sharma_morwitz_SavingMassesImpact_2016; @septianto_paramita_SadSmilingHow_2021], as an important factor in explaining donation behaviors.
 
 Building on the prior research, we propose the following five hypotheses (H1–H5):
 
@@ -83,7 +83,7 @@ Building on the prior research, we propose the following five hypotheses (H1–H
 
 # Method
 
-We conducted a between-subjects online experiment with two groups: high-interactivity and low-interactivity (controlled group). The stimuli is designed as an ad that encourages participants to donate winter clothing to a local homeless girl. For interactive features, participants could either interact with the ad using a drag-and-drop feature to “donate” three pieces of clothing (i.e., high-interactivity) or watch the animation of the giving process of the three pieces of clothing (i.e., low-interactivity).
+We conducted a between-subjects online experiment with two groups: high-interactivity and low-interactivity (controlled group). The stimulus is designed as an ad that encourages participants to donate winter clothing to a local homeless girl. For interactive features, participants in two groups either used a drag-and-drop feature to “donate” three pieces of clothing (i.e., high-interactivity) or watched an animation of the giving process for those three pieces of clothing (i.e., low-interactivity). 
 
 The current study was **NOT** preregistered. Simulated data and codes are available at [OSF](https://osf.io/ept28/files) and [GitHub](https://github.com/zhanmingchen/PSY8960-Fall25-Zhanming).
 
@@ -211,9 +211,9 @@ doc_sim_count
 
 ```
 
-The total sample in the current study consists of `r nrow(dat_sim)` US adults recruited from Amazon MTurk ($M_{\text{age}}$ = `r age_sim_mean`, $SD_{\text{age}}$ = `r age_sim_sd`). They were evenly assigned to one of the two conditions. The experiment begins with a consent process, and each participant interacts with the stimuli, followed by an online questionnaire including measures for variables and demographic questions. The questionnaire also includes measures for graphic qualities to ensure the differences of it between two groups are not significant, and three focus questions to make sure participants are answering the questions with their focus.
+The total sample in the current study consists of `r nrow(dat_sim)` US adults recruited from Amazon MTurk ($M_{\text{age}}$ = `r age_sim_mean`, $SD_{\text{age}}$ = `r age_sim_sd`). They were evenly assigned to one of the two conditions. The experiment begins with a consent process, followed by participants interacting with the stimuli, and then an online questionnaire including measures of variables and demographic questions. The questionnaire also includes measures of graphic qualities to ensure differences in these qualities between the two groups are not significant, and three focus questions to ensure participants answer the questions with their focus.
 
-The eligible criteria of participants include being adults, living in the US, being comfortable speaking English, and having access to a laptop and Internet to complete the tasks and survey using a web browser. Each participant are compensated a \$25 Amazon gift card.
+The eligibility criteria of participants include being adults, living in the US, being comfortable speaking English, and having access to a laptop and the Internet to complete the tasks and survey using a web browser. Each participant is compensated with a \$25 Amazon gift card.
 
 Here is a table of the detailed breakdown of participants' demographic information:
 
@@ -342,7 +342,7 @@ labelled::var_label(dat_sim$graphi_3_sim_scored) <- "The video looked realistic.
 
 ```
 
-As a manipulation check, participants completed a three-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], in which they were asked questions that assesses their perceived graphics quality (Cronbach's alpha = `r round(graphi_sim_alpha, digits = 2)`).
+As a manipulation check, participants completed a three-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], which assessed their perceived graphics quality (Cronbach's alpha = `r round(graphi_sim_alpha, digits = 2)`).
 
 ### Perceived Interactivity.
 
@@ -419,7 +419,7 @@ labelled::var_label(dat_sim$inte_5_sim_scored) <- "I could understand the contex
 
 ```
 
-Participants completed a five-item, 7-point Likert scale [@yim_etal_AugmentedRealityTechnology_2017; @wu_MediatingRolePerceived_2005], in which they were asked to answer questions that assesses their perceived interactivity (Cronbach's alpha = `r round(inte_sim_alpha, digits = 2)`). 
+Participants completed a five-item, 7-point Likert scale [@yim_etal_AugmentedRealityTechnology_2017; @wu_MediatingRolePerceived_2005], which assessed their perceived interactivity (Cronbach's alpha = `r round(inte_sim_alpha, digits = 2)`). 
 
 ### Social Presence.
 
@@ -487,7 +487,7 @@ labelled::var_label(dat_sim$soci_5_sim_scored) <- "The girl is only a computeriz
 
 ```
 
-Participants completed a ten-item, 7-point Likert scale [@higgins_etal_SympathyDigitalInfluence_2022], in which they were asked to answer questions that assesses their social presence (Cronbach's alpha = `r round(soci_sim_alpha, digits = 2)`).
+Participants completed a ten-item, 7-point Likert scale [@higgins_etal_SympathyDigitalInfluence_2022], which assessed their social presence (Cronbach's alpha = `r round(soci_sim_alpha, digits = 2)`).
 
 ### Sympathy.
 
@@ -570,7 +570,7 @@ labelled::var_label(dat_sim$symp_10_sim_scored) <- "While watching this advertis
 
 ```
 
-Participants completed a 10-item, 7-point Likert scale [@baberini_etal_ExaminingEffectsPhotographic_2015], in which they were asked to answer questions that assesses their sympathy (Cronbach's alpha = `r round(symp_sim_alpha, digits = 2)`).
+Participants completed a 10-item, 7-point Likert scale [@baberini_etal_ExaminingEffectsPhotographic_2015], which assessed their sympathy (Cronbach's alpha = `r round(symp_sim_alpha, digits = 2)`).
 
 ### Perceived Playfulness.
 
@@ -634,7 +634,7 @@ labelled::var_label(dat_sim$play_4_sim_scored) <- "I find this advertisement mak
 
 ```
 
-Participants completed a four-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], in which they were asked to answer questions that assesses their perceived playfulness (Cronbach's alpha = `r round(play_sim_alpha, digits = 2)`).
+Participants completed a four-item, 7-point Likert scale [@kang_etal_How3DVirtual_2020], which assessed their perceived playfulness (Cronbach's alpha = `r round(play_sim_alpha, digits = 2)`).
 
 ### Perceived Response Efficacy.
 
@@ -698,7 +698,7 @@ labelled::var_label(dat_sim$effi_4_sim_scored) <- "Donations to this advertiseme
 
 ```
 
-Participants completed a four-item, 7-point Likert scale [@cryder_etal_DonorDetails_2013; @sharma_morwitz_SavingMassesImpact_2016], in which they were asked to answer questions that assesses their perceived response efficacy (Cronbach's alpha = `r round(effi_sim_alpha, digits = 2)`).
+Participants completed a four-item, 7-point Likert scale [@cryder_etal_DonorDetails_2013; @sharma_morwitz_SavingMassesImpact_2016], which assessed their perceived response efficacy (Cronbach's alpha = `r round(effi_sim_alpha, digits = 2)`).
 
 ### Donation Intention.
 
@@ -759,7 +759,7 @@ labelled::var_label(dat_sim$dona_3_sim_scored) <- "How willing would you be to d
 
 ```
 
-Participants completed a three-item, 7-point Likert scale [@li_yin_FacialExpressionsBeneficiaries_2022], in which they were asked to answer questions that assesses their donation intention (Cronbach's alpha = `r round(dona_sim_alpha, digits = 2)`).
+Participants completed a three-item, 7-point Likert scale [@li_yin_FacialExpressionsBeneficiaries_2022], which assessed their donation intention (Cronbach's alpha = `r round(dona_sim_alpha, digits = 2)`).
 
 ## Data analysis
 
@@ -768,10 +768,6 @@ We used `r cite_r("r-references.bib")` for all our analyses.
 # Results
 
 ## Manipulation Tests
-
-A series of regression analyses and mediation analyses were performed using SPSS. The results revealed that one of the emotions and cognition factors (sympathy) and perceived response efficacy serially mediate the effect of perceived interactivity on donation intention while playfulness and social presence directly influences donation intention. We also found that the perceived facial expressions of the beneficiaries influence consumers’ donation intention through perceived playfulness and sympathy. The final model is presented in Figure 1.
-
-Discussion & Implications. Our results suggest interactive features (e.g., buttons and gestures) could increase donation intention especially by enhancing cognitive assessment of consumers’ efficacy. Unlike previous studies, our study highlighted the positive emotional heuristics (happy face leading to playfulness and donation intention). Considering the context of ad that highlights the suffering of the victims, this finding may imply the positive emotional experiences become very important in the context of interactive advertisement. Our study extends the understanding of advertising in the domain of donation behaviors by advocating the use of interactive features.
 
 ```{r graphi t-test, include=FALSE}
 
@@ -803,9 +799,9 @@ p_graphi_sim_fmt
   
 ```
 
-Overall, the graphic quality of the stimuli for two participant groups are well perceived ($M_{\text{graphic quality}}$ = `r round(graphi_sim_mean, digits = 2)`, $SD_{\text{graphic quality}}$ = `r round(graphi_sim_sd, digits = 2)`). The results from a Welch's independent samples *t*-test indicated no significant differences between the two groups, *t*(`r df_graphi_sim`) = `r t_graphi_sim`, *p*`r p_graphi_sim_fmt` (see Figure 1). 
+Overall, the graphic quality of the stimuli for two participant groups is well perceived ($M_{\text{graphic quality}}$ = `r round(graphi_sim_mean, digits = 2)`, $SD_{\text{graphic quality}}$ = `r round(graphi_sim_sd, digits = 2)`). The results from a Welch's independent samples *t*-test indicated no significant differences between the two groups, *t*(`r df_graphi_sim`) = `r t_graphi_sim`, *p*`r p_graphi_sim_fmt` (see Figure 1). 
 
-```{r graphi graph, echo=FALSE, fig.width = 4.5, fig.height = 3.5, dpi = 300}
+```{r graphi graph, echo=FALSE, fig.width = 6, fig.height = 4.5, dpi = 300}
 # create a bar chart using ggplot
 ## bar chart: geom_col() leaves the data as is. https://ggplot2.tidyverse.org/reference/geom_bar.html 
 ## errorbars: https://ggplot2.tidyverse.org/reference/geom_linerange.html
@@ -885,7 +881,7 @@ p_inte_sim_fmt
 
 According to the results from a Welch's independent samples *t*-test that compares the perceived interactivity of the stimuli between the high-interactivity group ($M_{\text{high interactivity}}$ = `r round(inte_sim_mean_g1, digits = 2)`, $SD_{\text{high interactivity}}$ = `r round(inte_sim_sd_g1, digits = 2)`) and the low-interactivity group ($M_{\text{low interactivity}}$ = `r round(inte_sim_mean_g2, digits = 2)`, $SD_{\text{low interactivity}}$ = `r round(inte_sim_sd_g2, digits = 2)`), there are significant differences between the two groups, *t*(`r df_inte_sim`) = `r t_inte_sim`, *p*`r p_inte_sim_fmt` (see Figure 2).
 
-```{r interactivity graph, echo=FALSE, fig.width = 4.5, fig.height = 3.5, dpi = 300}
+```{r interactivity graph, echo=FALSE, fig.width = 6, fig.height = 4.5, dpi = 300}
 # create a bar chart using ggplot
 ## bar chart: geom_col() leaves the data as is. https://ggplot2.tidyverse.org/reference/geom_bar.html 
 ## errorbars: https://ggplot2.tidyverse.org/reference/geom_linerange.html
@@ -940,7 +936,7 @@ ggplot(inte_sim_bar_dat, aes(x = group_label, y = inte_mean, fill = group_label)
 
 ## Hypotheses Validation
 
-A Pearson correlation test was also conducted to test the hypotheses. All hypotheses were supported (see the table below). 
+A series of Pearson correlation tests was conducted to assess the hypotheses. All hypotheses were supported (see the table below). 
 
 ```{r pearson h1a inte ~ play, include = FALSE}
 # Pearson correlation test
@@ -1238,7 +1234,7 @@ apa_table(hypo_sim_table,
 
 # Discussion
 
-The purpose of this study was to examine how perceived interactivity relates to donation intention in advertisement design. The results supported our hypotheses, indicating that this relationship is mediated by perceived playfulness, sympathy, social presence, and response efficacy. Consequently, these findings suggest that advertisers and marketers should prioritize interactive features to effectively encourage donation intentions. Future research should explore which design elements can effectively improve perceived interactivity. 
+This study aimed to explore how perceived interactivity influences donation intention in advertisement design. The results supported our hypotheses, showing that this relationship is mediated by perceived playfulness, sympathy, social presence, and response efficacy. As a result, these findings suggest that advertisers and marketers should focus on interactive features to effectively encourage donation intentions. Future research should explore which design elements can effectively improve perceived interactivity. 
 
 \newpage
 
