@@ -217,8 +217,6 @@ The eligibility criteria of participants include being adults, living in the US,
 
 Here is a table of the detailed breakdown of participants' demographic information:
 
-*Table 1*. Participants' demographic information breakdown. 
-
 ```{r demographics table, echo=FALSE}
 
 # this code creates a table, in which you almost literally "create" the table with the code
