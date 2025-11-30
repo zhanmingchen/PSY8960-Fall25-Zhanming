@@ -5,6 +5,7 @@ The project explores how perceived interactivity in advertising relates to donat
 
 ## Directory Structure
 
+```text
 PSY8960-Fall25-Zhanming/
 ├─ Archives/                                            # Non active materials kept for posterity
 │  ├─ archived_data_testing/                            # Non active materials for data simulation
@@ -16,6 +17,7 @@ PSY8960-Fall25-Zhanming/
 ├─ Procedure/                                           # Study-related materials and course practice files
 ├─ PSY8960-Fall25-Zhanming.Rproj                        # RStudio project entry
 └─ README.md                                            # Project overview (this file)
+```
 
 ## Quick guides for reproducibility check 
 
