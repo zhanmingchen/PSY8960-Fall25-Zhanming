@@ -1225,8 +1225,11 @@ hypo_sim_table <- dplyr::tribble(
 # now we can use the built in APA table function to format that table
 
 apa_table(hypo_sim_table, 
-             caption = "Hypotheses Test Results",
-             align = "l", digits = 2,
+          caption = "Hypotheses Test Results",
+          col.names = c("Hypothesis", "Pairs", "\\textit{t}", "\\textit{p}"), # italic column labels
+          escape = FALSE, # allow LaTeX in the table
+          align = "l", 
+          digits = 2,
           longtable = TRUE, # for page break
           # note = "Demographic Breakdowns of Participants" # not in use
           )

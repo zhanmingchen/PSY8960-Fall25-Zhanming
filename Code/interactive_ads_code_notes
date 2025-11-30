@@ -22,3 +22,9 @@
 **2025-11-25:**
 
 * Updated the codes for data simulation by reverse the data for soci_3 and soci_5, which aligns with the descriptions in the data dictionary. 
+
+**2025-11-30:**
+
+* Updated the codes for data simulation by reverse the variable names of "prob_left_skewed" and "prob_right_skewed" following instructor's feedback.
+* "Left skew means that the tail pulls to the left, and so most of the distribution is over the right side." 
+* Re-check the data generation output and rmd output
