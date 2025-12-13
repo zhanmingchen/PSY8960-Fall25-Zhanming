@@ -31,3 +31,7 @@
 
 * Update the data directory file regarding the keying, type, and value_labels of the "graphics quality" items 
 * Regenerated the simulated data files using the updated codes 
+
+**2025-12-12:** 
+
+* Update the description and value lables of the "group" variable

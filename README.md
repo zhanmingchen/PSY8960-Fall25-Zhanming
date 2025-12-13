@@ -44,5 +44,6 @@ PSY8960-Fall25-Zhanming/
 * R Markdown file: `/Reports/interactive_ads_report_papaja_20251127.Rmd`
 * Notes: 
   * Make sure the required packages are installed 
-  * Click Knit
+  * Installed XQuartz package if “summaryTools” is not working
+  * Click Knit 
   * Current output report: `/Reports/interactive_ads_report_papaja_20251127.pdf `

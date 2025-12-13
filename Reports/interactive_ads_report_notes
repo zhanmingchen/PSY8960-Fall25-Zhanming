@@ -5,9 +5,17 @@
 
 **2025-11-27:**
 
-- Knit the first draft of the pdf. All code works. 
-- This is so fun!
+* Knit the first draft of the pdf. All code works. 
+* This is so fun!
 
 **2025-11-30:**
 
-- Update Table 2 to make the column titles italic.
+* Update Table 2 to make the column titles italic.
+
+**2025-12-12:**
+
+* Update citations using Zotero integration. Now include two bib files: 1) "reference.bib" generated automatically and 2) "r-reference.bib" for R packages only. 
+* Remove the homogeneity of variance test at the beginning of the t-test code blocks. 
+* Use `printp()` to format p-values less than .001, and simplify the code. 
+* Update the two graphs from bar charts to `geom_boxplot()` + `geom_jitter()`. 
+* Add instructions on installing the XQuartz package if “summaryTools” is not working
