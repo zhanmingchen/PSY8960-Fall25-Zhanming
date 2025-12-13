@@ -13,8 +13,8 @@ PSY8960-Fall25-Zhanming/
 ├─ Code/                                                # Code/scripts for data simulating, cleaning, analysis
 ├─ Data/                                                # All project data and data dictionary
 ├─ Reports/                                             # Manuscripts and knitted reports
-│  └─ interactive_ads_report_papaja_20251127_files/     # Figures generated when knitting
-├─ Procedure/                                           # Study-related materials and course practice files
+│  └─ interactive_ads_report_papaja_20251212_files/     # Figures generated when knitting
+├─ Procedure/                                           # Course practice files (now empty)
 ├─ PSY8960-Fall25-Zhanming.Rproj                        # RStudio project entry
 └─ README.md                                            # Project overview (this file)
 ```
@@ -41,9 +41,9 @@ PSY8960-Fall25-Zhanming/
 
 ### Report Generation
 
-* R Markdown file: `/Reports/interactive_ads_report_papaja_20251127.Rmd`
+* R Markdown file: `/Reports/interactive_ads_report_papaja_20251212.Rmd`
 * Notes: 
   * Make sure the required packages are installed 
   * Installed XQuartz package if “summaryTools” is not working
   * Click Knit 
-  * Current output report: `/Reports/interactive_ads_report_papaja_20251127.pdf `
+  * Current output report: `/Reports/interactive_ads_report_papaja_20251212.pdf `
